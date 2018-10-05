@@ -1,0 +1,150 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+ShoppingCartService.cs 166 ==>                     TraceHelper.Error(TraceCategory.ShoppingCartService, ex.Message, ex, message.LoanId ?? Guid.Empty, message.UserAccountId);
+Surronding Lines
+            catch (Exception ex)
+            {
+                if (ex is InvalidOperationException || ex is IntegrationAuthenticationException)
+                {
+                    TraceHelper.Error(TraceCategory.ShoppingCartService, ex.Message, ex, message.LoanId ?? Guid.Empty, message.UserAccountId);
+
+                    return new FailedToRetrieveShoppingCart()
+                    {
+                        ErrorMessage = ex.Message,
+                        ServiceResult = ShoppingCartServiceResult.ServiceError,969 ==>             throw
+Surronding Lines
+            }
+
+            allEligibleProducts = null;
+
+            throw
+                getRatesResult.Exception != null ? getRatesResult.Exception :
+                getRatesResult.Failed != null ? new InvalidOperationException(getRatesResult.Failed.ErrorMessage) : new InvalidOperationException("An error occurred while getting Pricing Rates.");
+        }
+        #endregion
+,795 ==>                     throw;
+Surronding Lines
+            {
+                if (ex is InvalidOperationException || ex is IntegrationAuthenticationException)
+                {
+                    TraceHelper.Error(TraceCategory.ShoppingCartService, ex.Message, ex);
+                    throw;
+                }  
+
+                throw new Exception( "Error occurred in ShoppingCartService.GetShoppingCart()!", ex );
+            }
+        },129 ==>                 shoppingCart = GetShoppingCart(message.UserAccountId, showAllProducts, message.SmartCreditsEnabled,
+Surronding Lines
+                bool showAllProducts = message.ShowAllProducts.HasValue && (bool)message.ShowAllProducts;
+                List<Product> allEligibleProducts;
+                ShoppingCart shoppingCart = null;
+
+                shoppingCart = GetShoppingCart(message.UserAccountId, showAllProducts, message.SmartCreditsEnabled,
+                   message.IsImpersonatedConciergeModel, out allEligibleProducts, message.IsConcierge, interviewParam: message.Interview, loanId: message.LoanId,
+                   mortgageInsuranceAmountMethod: message.MortgageInsuranceAmountMethod, mortgageInsuranceUpfrontPreferredPaymentPeriod: message.MortgageInsuranceUpfrontPreferredPaymentPeriod, endorsementDate: message.EndorsementDate,
+                   totalLoanAmount: message.TotalLoanAmount, isRefinanceStreamline: message.IsRefinanceStreamline, mortgageType: message.MortgageType, costsForPreserve: message.CostsForPreserve, contextData: message.ContextData,
+                   totalUnpaidBalance: message.TotalUnpaidBalance, taxQuestions: message.TaxQuestions);
+
+OperationHandler.cs 116
+Service.cs 63
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.Services.ShoppingCartService.Handle(RetrieveShoppingCart message)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 166  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.ServiceModel\Service.cs:line 63  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )  
+Unexpected character encountered while parsing value: S. Path '', line 0, position 0.</Message><Source>MML.Services.ShoppingCart</Source><TargetSite>GetPricingRates</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at MML.Services.ShoppingCartService.GetPricingRates(Int32 userAccountId, Interview interview, Boolean showAllProducts, Boolean smartCreditsEnabled, Boolean isImpersonatedConciergeModel, List`1&amp; allEligibleProducts, Boolean getAllEligibleProducts, Boolean returnChosenProduct, Nullable`1 loanId, AmountMethodEnum mortgageInsuranceAmountMethod, UpfrontPreferredPaymentPeriodEnum mortgageInsuranceUpfrontPreferredPaymentPeriod, Nullable`1 endorsementDate, Decimal totalLoanAmount, Nullable`1 isRefinanceStreamline, Nullable`1 mortgageType, List`1 costsForPreserve, ContextData contextData, Decimal totalUnpaidBalance, GFETaxQuestionsResponse taxQuestions)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 969
+  
+		at MML.Services.ShoppingCartService.GetShoppingCart(Int32 userAccountId, Boolean showAllProducts, Boolean smartCreditsEnabled, Boolean isImpersonatedConciergeModel, List`1&amp; allEligibleProducts, Boolean getAllEligibleProductsIfUserIsConcierge, Boolean returnChosenProduct, Interview interviewParam, Nullable`1 loanId, AmountMethodEnum mortgageInsuranceAmountMethod, UpfrontPreferredPaymentPeriodEnum mortgageInsuranceUpfrontPreferredPaymentPeriod, Nullable`1 endorsementDate, Decimal totalLoanAmount, Nullable`1 isRefinanceStreamline, Nullable`1 mortgageType, List`1 costsForPreserve, ContextData contextData, Decimal totalUnpaidBalance, GFETaxQuestionsResponse taxQuestions)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 795
+  
+		at MML.Services.ShoppingCartService.Handle(RetrieveShoppingCart message)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 129</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.Services.ShoppingCartService.Handle(RetrieveShoppingCart message)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 166&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\10\s\Trunk.126\MML.ServiceModel\Service.cs:line 63&amp;#xD;&amp;#xA;  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp;amp; outputs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.DispatchAndReleasePump(RequestContext request, Boolean cleanThread, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.HandleRequest(RequestContext request, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.AsyncMessagePump(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.OnAsyncReceiveComplete(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceiveAsyncResult.OnReceive(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SynchronizedMessageSource.ReceiveAsyncResult.OnReceiveComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SessionConnectionReader.OnAsyncReadComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.FinishRead()&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsync(Object sender, SocketAsyncEventArgs eventArgs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsyncCompleted(Object sender, SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.FinishOperationSuccess(SocketError socketError, Int32 bytesTransferred, SocketFlags flags)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.CompletionPortCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* nativeOverlapped)&amp;#xD;&amp;#xA;  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><ExceptionInformation Type="System.InvalidOperationException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>PRICING SERVICE|Unexpected character encountered while parsing value: S. Path '', line 0, position 0.</Message><Source>MML.Services.ShoppingCart</Source><TargetSite>GetPricingRates</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at MML.Services.ShoppingCartService.GetPricingRates(Int32 userAccountId, Interview interview, Boolean showAllProducts, Boolean smartCreditsEnabled, Boolean isImpersonatedConciergeModel, List`1&amp; allEligibleProducts, Boolean getAllEligibleProducts, Boolean returnChosenProduct, Nullable`1 loanId, AmountMethodEnum mortgageInsuranceAmountMethod, UpfrontPreferredPaymentPeriodEnum mortgageInsuranceUpfrontPreferredPaymentPeriod, Nullable`1 endorsementDate, Decimal totalLoanAmount, Nullable`1 isRefinanceStreamline, Nullable`1 mortgageType, List`1 costsForPreserve, ContextData contextData, Decimal totalUnpaidBalance, GFETaxQuestionsResponse taxQuestions)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 969
+  
+		at MML.Services.ShoppingCartService.GetShoppingCart(Int32 userAccountId, Boolean showAllProducts, Boolean smartCreditsEnabled, Boolean isImpersonatedConciergeModel, List`1&amp; allEligibleProducts, Boolean getAllEligibleProductsIfUserIsConcierge, Boolean returnChosenProduct, Interview interviewParam, Nullable`1 loanId, AmountMethodEnum mortgageInsuranceAmountMethod, UpfrontPreferredPaymentPeriodEnum mortgageInsuranceUpfrontPreferredPaymentPeriod, Nullable`1 endorsementDate, Decimal totalLoanAmount, Nullable`1 isRefinanceStreamline, Nullable`1 mortgageType, List`1 costsForPreserve, ContextData contextData, Decimal totalUnpaidBalance, GFETaxQuestionsResponse taxQuestions)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 795
+  
+		at MML.Services.ShoppingCartService.Handle(RetrieveShoppingCart message)
+	in C:\CODE\iMP\126\Trunk.126\MML.Services.ShoppingCart\ShoppingCartService.cs:line 129</StackTrace></ExceptionInformation>

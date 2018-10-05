@@ -1,0 +1,255 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,65,57
+Encompass.cs 2348 ==>                 TraceHelper.Error(TraceCategory.EncompassService, "Failed to connect to LOS microservice", ex);
+Surronding Lines
+                }
+            }
+            catch (Exception ex)
+            {
+                TraceHelper.Error(TraceCategory.EncompassService, "Failed to connect to LOS microservice", ex);
+                success = false;
+            }
+
+            return success;
+        },2258 ==>                     success = ExportDocumentByApiOrMicroSvc(losDocument, disclosureTrackingType, userAccountId);
+Surronding Lines
+
+                if (isEmaeServiceApiEnabled)
+                {
+                    // Extracted this method to support convoluted logic per historical configuration gymnasitcs
+                    success = ExportDocumentByApiOrMicroSvc(losDocument, disclosureTrackingType, userAccountId);
+                }
+                else // SPLIT ELSE/IF OVER 2 LINES FOR EASY VERSION COMPARE , LOGIC GIVES PRECEDENCE TO isEmaeServiceApiEnabled
+                if (!MML.iMP.Common.Configuration.Client.Instance.isEmaeMicroServiceEnabled)
+                {
+                    // In case that losDocument.LoanId is not assigned in the invoker,,2341 ==>                     EmaeServiceClientProvider.EPP.DocumentClient.ExportDocument(request);
+Surronding Lines
+                        },
+                        Stream = stream
+                    };
+
+                    EmaeServiceClientProvider.EPP.DocumentClient.ExportDocument(request);
+
+                    success = true;
+                }
+            }
+            catch (Exception ex)
+URLADeliveryService.cs 1794 ==>                     success = losInstance.ExportDocument(losDocument, disclosuresTrackingType, 0);
+Surronding Lines
+                    losDocument.DocumentClass = documentClass;
+                    losDocument.DocumentName = string.Format("{0}.{1}", documentName, contentType);
+                    losDocument.EncompassBorrowerPairId = childLoanExportData.EncompassBorrowerPairId;
+
+                    success = losInstance.ExportDocument(losDocument, disclosuresTrackingType, 0);
+
+                    if (initialDisclosures && success && !string.IsNullOrWhiteSpace(initDislosuresDocumentPath))
+                    {
+                        losDocument.DataFormat = initDislosuresContentType;
+                        losDocument.DocumentPath = initDislosuresDocumentPath;,994 ==>                 ExportDocumentToLOS(message.LoanId, loanFolder, loanNumber, loanGuid, message.FileStoreItemId, message.UploadedFileId,
+Surronding Lines
+                loanNumber = LoanServiceFacade.RetrieveLoanNumber(message.LoanId, message.UserAccountId);
+                string loanFolder = LoanServiceFacade.RetrieveLosFolderOrDefaultLosFolder(message.LoanId, message.UserAccountId);
+                string loanGuid = LosServiceFacade.RetrieveEncompassGuid(message.LoanId, message.UserAccountId);
+
+                ExportDocumentToLOS(message.LoanId, loanFolder, loanNumber, loanGuid, message.FileStoreItemId, message.UploadedFileId,
+                    message.DocumentCategory, restRequestId: message.RestRequestId, documentClass: message.DocumentClass, documentName: message.DocumentName, retryInitialDisclosures: message.RetryInitialDisclosures);
+
+                TraceHelper.Verbose(TraceCategory.URLADeliveryService, "Export document to encompass invoked", message.LoanId, message.UserAccountId);
+                return new ContractUpdated()
+                {
+OperationHandler.cs 116
+Service.cs 63
+EmaeServiceClientProvider.cs 155 ==>             ConfigureApi();
+Surronding Lines
+    class EmaeServiceOperationsClientBaseApi
+    {
+        public EmaeServiceOperationsClientBaseApi()
+        {
+            ConfigureApi();
+        }
+
+        #region API Configurations
+        private string OAuthEndpoint { get; set; }
+,409 ==>         public EmaeServiceLoanOperationsClientApi() : base()
+Surronding Lines
+    }
+
+    class EmaeServiceLoanOperationsClientApi : EmaeServiceOperationsClientBaseApi, IEmaeServiceLoanOperationsClient
+    {
+        public EmaeServiceLoanOperationsClientApi() : base()
+        {
+            CONTEXT_PATH_EXPORT = "/los/loan/export";
+        }
+
+        #region configuration,762 ==>             LoanClient = new EmaeServiceLoanOperationsClientApi();
+Surronding Lines
+        }
+
+        private void InitializeApi()
+        {
+            LoanClient = new EmaeServiceLoanOperationsClientApi();
+            DocumentClient = new EmaeServiceDocumentOperationsClientApi();
+        }
+
+        private static EmaeServiceClientProvider _emaeProxyProvider;
+        public static EmaeServiceClientProvider EPP { get { return _emaeProxyProvider ?? (_emaeProxyProvider = new EmaeServiceClientProvider()); } },722 ==>                     InitializeApi();
+Surronding Lines
+                case PROVIDER.WCF:
+                    InitializeWcf();
+                    break;
+                case PROVIDER.API:
+                    InitializeApi();
+                    break;
+                default:
+                    // Default to previous behavior
+                    InitializeWcf();
+                    break;,767 ==>         public static EmaeServiceClientProvider EPP { get { return _emaeProxyProvider ?? (_emaeProxyProvider = new EmaeServiceClientProvider()); } }
+Surronding Lines
+            DocumentClient = new EmaeServiceDocumentOperationsClientApi();
+        }
+
+        private static EmaeServiceClientProvider _emaeProxyProvider;
+        public static EmaeServiceClientProvider EPP { get { return _emaeProxyProvider ?? (_emaeProxyProvider = new EmaeServiceClientProvider()); } }
+
+        public IEmaeServiceLoanOperationsClient LoanClient { get; private set; }
+
+        public IEmaeServiceDocumentOperationsClient DocumentClient { get; private set; }
+    }
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 65  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 57  
+		at MML.LoanCenter.Los.Encompass.Encompass.ExportDocumentByApiOrMicroSvc(ILOSDocument losDocument, DisclosureTrackingType disclosureTrackingType, Int32 userAccountId)
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\Encompass.cs:line 2348  
+		at MML.LoanCenter.Los.Encompass.Encompass.ExportDocument(ILOSDocument losDocument, DisclosureTrackingType disclosureTrackingType, Int32 userAccountId)
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\Encompass.cs:line 2258  
+		at MML.Services.URLADeliveryService.ExportDocumentToLOS(Guid loanId, String loanFolder, String loanNumber, String loanGuid, Guid fileStoreItemId, Guid uploadedFileId, String documentCategory, Guid restRequestId, String documentClass, String documentName, Boolean attachCreditFileToForms, DisclosureTrackingType disclosuresTrackingType, Boolean retryInitialDisclosures)
+	in C:\CODE\iMP\126\REL.4.1.1670\MML.Services.URLADelivery\URLADeliveryService.cs:line 1794  
+		at MML.Services.URLADeliveryService.Handle(ExportDocumentToEncompass message)
+	in C:\CODE\iMP\126\REL.4.1.1670\MML.Services.URLADelivery\URLADeliveryService.cs:line 994  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.ServiceModel\Service.cs:line 63  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceOperationsClientBaseApi.ConfigureApi()
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceOperationsClientBaseApi..ctor()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 155
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceLoanOperationsClientApi..ctor()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 409
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceClientProvider.InitializeApi()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 762
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceClientProvider..ctor()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 722
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceClientProvider.get_EPP()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 767
+  
+		at MML.LoanCenter.Los.Encompass.Encompass.ExportDocumentByApiOrMicroSvc(ILOSDocument losDocument, DisclosureTrackingType disclosureTrackingType, Int32 userAccountId)
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\Encompass.cs:line 2341</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 65&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 57&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Los.Encompass.Encompass.ExportDocumentByApiOrMicroSvc(ILOSDocument losDocument, DisclosureTrackingType disclosureTrackingType, Int32 userAccountId)
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\Encompass.cs:line 2348&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Los.Encompass.Encompass.ExportDocument(ILOSDocument losDocument, DisclosureTrackingType disclosureTrackingType, Int32 userAccountId)
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\Encompass.cs:line 2258&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.ExportDocumentToLOS(Guid loanId, String loanFolder, String loanNumber, String loanGuid, Guid fileStoreItemId, Guid uploadedFileId, String documentCategory, Guid restRequestId, String documentClass, String documentName, Boolean attachCreditFileToForms, DisclosureTrackingType disclosuresTrackingType, Boolean retryInitialDisclosures)
+	in C:\CODE\iMP\126\REL.4.1.1670\MML.Services.URLADelivery\URLADeliveryService.cs:line 1794&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.Handle(ExportDocumentToEncompass message)
+	in C:\CODE\iMP\126\REL.4.1.1670\MML.Services.URLADelivery\URLADeliveryService.cs:line 994&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\29\s\Trunk.126\MML.ServiceModel\Service.cs:line 63&amp;#xD;&amp;#xA;  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp;amp; outputs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.DispatchAndReleasePump(RequestContext request, Boolean cleanThread, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.HandleRequest(RequestContext request, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.AsyncMessagePump(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.OnAsyncReceiveComplete(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceiveAsyncResult.OnReceive(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SynchronizedMessageSource.ReceiveAsyncResult.OnReceiveComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SessionConnectionReader.OnAsyncReadComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.FinishRead()&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsync(Object sender, SocketAsyncEventArgs eventArgs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsyncCompleted(Object sender, SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.FinishOperationSuccess(SocketError socketError, Int32 bytesTransferred, SocketFlags flags)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.CompletionPortCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* nativeOverlapped)&amp;#xD;&amp;#xA;  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><ExceptionInformation Type="System.IO.FileLoadException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Could not load file or assembly 'Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed' or one of its dependencies. The located assembly's manifest definition does not match the assembly reference. (Exception from HRESULT: 0x80131040)</Message><Source>MML.LoanCenter.Los.Encompass</Source><TargetSite>ConfigureApi</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceOperationsClientBaseApi.ConfigureApi()
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceOperationsClientBaseApi..ctor()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 155
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceLoanOperationsClientApi..ctor()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 409
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceClientProvider.InitializeApi()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 762
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceClientProvider..ctor()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 722
+  
+		at MML.LoanCenter.Los.Encompass.EmaeServiceClientProvider.get_EPP()
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\EmaeServiceClientProvider.cs:line 767
+  
+		at MML.LoanCenter.Los.Encompass.Encompass.ExportDocumentByApiOrMicroSvc(ILOSDocument losDocument, DisclosureTrackingType disclosureTrackingType, Int32 userAccountId)
+	in C:\Code\iMP\126\REL.4.1.1670\MML.LoanCenter.Los.Encompass\Encompass.cs:line 2341</StackTrace></ExceptionInformation>

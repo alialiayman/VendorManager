@@ -1,0 +1,211 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+ExtCommon.cs 32
+DataContext.cs 579
+MegaLoan.cs 2253,669,424,487
+LoanExController.cs 71
+HttpResponseHelper.cs 106
+CrossSiteScriptingHandler.cs 28
+ApiLogHandler.cs 81
+LoanExtValidation.cs 168,301,38
+RuleProcessor.cs 34
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.Common.ExtCommon.TryLoanAction(Action action, Nullable`1 loanId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\ExtensionMethods\ExtCommon.cs:line 32  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.&amp;lt;&amp;gt;c__DisplayClass18_2.&amp;lt;SaveLoanCdm&amp;gt;b__7(Action`4 a)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.DataAccess\DataContext.cs:line 579  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.SaveLoanCdm(Int32 userAccountId, Func`2 surface, Action`1 validate, Func`2 update, IEnumerable`1 contextActionsPre, IEnumerable`1 contextActionsPost, Boolean logSQL, Boolean clonedFlag)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.DataAccess\DataContext.cs:line 579  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.SaveLoanAndCreateDefaultActivities(Int32 userAccountId, Func`2 surface, Action`1 validate, Func`2 update, IEnumerable`1 contextActionsPre, IEnumerable`1 contextActionsPost, Boolean logSQL, Boolean clonedFlag)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 2253  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.SaveInProc(LoanViewModel loanVm, Int32 userAccountId, Boolean ignoreLocks, Boolean requestDisclosuresWithSave, Boolean exportToLOSTriggered)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 669  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.Save(LoanViewModel loanVm, Int32 userAccountId, Boolean requestDisclosuresWithSave, Boolean exportToLOSTriggered)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 424  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanExController.&amp;lt;&amp;gt;c__DisplayClass6_0.&amp;lt;MegaSave&amp;gt;b__0(ViewModelBuilderParametersBase p)
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Controllers\Loan\LoanExController.cs:line 71  
+		at MML.Web.LoanCenter.Services.Helpers.HttpResponseHelper.BuildResponse[T](Func`2 build, ViewModelBuilderParametersBase param)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Helpers\HttpResponseHelper.cs:line 106  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanExController.MegaSave(LoanViewModel viewModel, Int32 userAccountId, Boolean requestDisclosuresWithSave)
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Controllers\Loan\LoanExController.cs:line 71  
+		at lambda_method(Closure , Object , Object[] )  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;SendAsync&amp;gt;d__3.MoveNext()
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Handlers\CrossSiteScriptingHandler.cs:line 28  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Handlers\ApiLogHandler.cs:line 81  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)  
+
+Parameter name: sourceTimeZone</Message><Source>mscorlib</Source><TargetSite>ConvertTime</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+
+  
+
+  
+		at MML.LoanCenter.Services.LoanExtValidation.ProcessAutoDisclosuresRules(Loan loanCdm, Int32 userAccountId)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\LoanExtValidation.cs:line 168
+  
+		at MML.LoanCenter.Services.LoanExtValidation.SetAplicationDate(Loan loanCdm, Boolean rulesValidated)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\LoanExtValidation.cs:line 301
+  
+		at MML.LoanCenter.Services.LoanExtValidation.ProcessAllSixPiecesRules(Loan loanCdm)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\LoanExtValidation.cs:line 38
+  
+		at MML.LoanCenter.Services.RuleProcessor.ProcessPreSaveRules(Loan loanCdm, LoanViewModel loan, IEnumerable`1 loanEfList, Nullable`1 userAccountId)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\RuleProcessing\RuleProcessor.cs:line 34
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.&lt;&gt;c__DisplayClass62_0.&lt;GetSaveContextActionsPre&gt;b__0(Loan Lc, IEnumerable`1 Le, PipelineActionContext Ctx, MainDbContext dbCtx)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 487
+  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.&lt;&gt;c__DisplayClass18_0.&lt;SaveLoanCdm&gt;b__8()
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.DataAccess\DataContext.cs:line 579
+  
+		at MML.Common.ExtCommon.TryLoanAction(Action action, Nullable`1 loanId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\ExtensionMethods\ExtCommon.cs:line 32</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.Common.ExtCommon.TryLoanAction(Action action, Nullable`1 loanId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\ExtensionMethods\ExtCommon.cs:line 32&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.&amp;lt;&amp;gt;c__DisplayClass18_2.&amp;lt;SaveLoanCdm&amp;gt;b__7(Action`4 a)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.DataAccess\DataContext.cs:line 579&amp;#xD;&amp;#xA;  
+		at System.Collections.Generic.List`1.ForEach(Action`1 action)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.SaveLoanCdm(Int32 userAccountId, Func`2 surface, Action`1 validate, Func`2 update, IEnumerable`1 contextActionsPre, IEnumerable`1 contextActionsPost, Boolean logSQL, Boolean clonedFlag)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.DataAccess\DataContext.cs:line 579&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.SaveLoanAndCreateDefaultActivities(Int32 userAccountId, Func`2 surface, Action`1 validate, Func`2 update, IEnumerable`1 contextActionsPre, IEnumerable`1 contextActionsPost, Boolean logSQL, Boolean clonedFlag)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 2253&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.SaveInProc(LoanViewModel loanVm, Int32 userAccountId, Boolean ignoreLocks, Boolean requestDisclosuresWithSave, Boolean exportToLOSTriggered)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 669&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.Save(LoanViewModel loanVm, Int32 userAccountId, Boolean requestDisclosuresWithSave, Boolean exportToLOSTriggered)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 424&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanExController.&amp;lt;&amp;gt;c__DisplayClass6_0.&amp;lt;MegaSave&amp;gt;b__0(ViewModelBuilderParametersBase p)
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Controllers\Loan\LoanExController.cs:line 71&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Helpers.HttpResponseHelper.BuildResponse[T](Func`2 build, ViewModelBuilderParametersBase param)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Helpers\HttpResponseHelper.cs:line 106&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanExController.MegaSave(LoanViewModel viewModel, Int32 userAccountId, Boolean requestDisclosuresWithSave)
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Controllers\Loan\LoanExController.cs:line 71&amp;#xD;&amp;#xA;  
+		at lambda_method(Closure , Object , Object[] )&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.&amp;lt;&amp;gt;c__DisplayClass10.&amp;lt;GetExecutor&amp;gt;b__9(Object instance, Object[] methodParameters)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.&amp;lt;InvokeActionAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.InvokeActionAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.InvokeActionAsync(HttpActionContext actionContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;ExecuteAsync&amp;gt;b__0(ActionInvoker innerInvoker)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;&amp;gt;c__DisplayClass10`1.&amp;lt;InvokeActionWithActionFilters&amp;gt;b__f()&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.&amp;lt;CallOnActionExecutedAsync&amp;gt;d__5.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.CallOnActionExecutedAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.&amp;lt;ExecuteActionFilterAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.ExecuteActionFilterAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.System.Web.Http.Filters.IActionFilter.ExecuteActionFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;ExecuteAsync&amp;gt;d__2.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.ExecuteAsync(CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.AuthorizationFilterAttribute.&amp;lt;ExecuteAuthorizationFilterAsyncCore&amp;gt;d__2.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.AuthorizationFilterAttribute.ExecuteAuthorizationFilterAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.AuthorizationFilterAttribute.System.Web.Http.Filters.IAuthorizationFilter.ExecuteAuthorizationFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.AuthorizationFilterResult.ExecuteAsync(CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.ApiController.ExecuteAsync(HttpControllerContext controllerContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpControllerDispatcher.&amp;lt;SendAsync&amp;gt;d__1.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpControllerDispatcher.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.HttpMessageInvoker.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpRoutingDispatcher.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;SendAsync&amp;gt;d__3.MoveNext()
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Handlers\CrossSiteScriptingHandler.cs:line 28&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()
+	in C:\TFS_agent\_work\81\s\br\MML.Web.LoanCenter.Services\Handlers\ApiLogHandler.cs:line 81&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.&amp;lt;HandleCorsRequestAsync&amp;gt;d__5.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.HandleCorsRequestAsync(HttpRequestMessage request, CorsRequestContext corsRequestContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.HttpServer.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.HttpServer.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.HttpMessageInvoker.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.WebHost.HttpControllerHandler.&amp;lt;ProcessRequestAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.WebHost.HttpControllerHandler.ProcessRequestAsyncCore(HttpContextBase contextBase)&amp;#xD;&amp;#xA;  
+		at System.Web.TaskAsyncHelper.BeginTask(Func`1 taskFunc, AsyncCallback callback, Object state)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp;amp; completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.PipelineStepManager.ResumeSteps(Exception error)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.BeginProcessRequestNotification(HttpContext context, AsyncCallback cb)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)</Callstack><ExceptionInformation Type="System.ArgumentException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>The conversion could not be completed because the supplied DateTime did not have the Kind property set correctly.  For example, when the Kind property is DateTimeKind.Local, the source time zone must be TimeZoneInfo.Local.
+Parameter name: sourceTimeZone</Message><Source>mscorlib</Source><TargetSite>ConvertTime</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at System.TimeZoneInfo.ConvertTime(DateTime dateTime, TimeZoneInfo sourceTimeZone, TimeZoneInfo destinationTimeZone, TimeZoneInfoOptions flags, CachedData cachedData)
+  
+		at System.TimeZoneInfo.ConvertTimeToUtc(DateTime dateTime, TimeZoneInfo sourceTimeZone)
+  
+		at MML.LoanCenter.Services.LoanExtValidation.ProcessAutoDisclosuresRules(Loan loanCdm, Int32 userAccountId)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\LoanExtValidation.cs:line 168
+  
+		at MML.LoanCenter.Services.LoanExtValidation.SetAplicationDate(Loan loanCdm, Boolean rulesValidated)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\LoanExtValidation.cs:line 301
+  
+		at MML.LoanCenter.Services.LoanExtValidation.ProcessAllSixPiecesRules(Loan loanCdm)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\LoanExtValidation.cs:line 38
+  
+		at MML.LoanCenter.Services.RuleProcessor.ProcessPreSaveRules(Loan loanCdm, LoanViewModel loan, IEnumerable`1 loanEfList, Nullable`1 userAccountId)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\RuleProcessing\RuleProcessor.cs:line 34
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.&lt;&gt;c__DisplayClass62_0.&lt;GetSaveContextActionsPre&gt;b__0(Loan Lc, IEnumerable`1 Le, PipelineActionContext Ctx, MainDbContext dbCtx)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 487
+  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.&lt;&gt;c__DisplayClass18_0.&lt;SaveLoanCdm&gt;b__8()
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.DataAccess\DataContext.cs:line 579
+  
+		at MML.Common.ExtCommon.TryLoanAction(Action action, Nullable`1 loanId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\ExtensionMethods\ExtCommon.cs:line 32</StackTrace></ExceptionInformation>

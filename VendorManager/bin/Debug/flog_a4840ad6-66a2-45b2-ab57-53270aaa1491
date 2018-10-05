@@ -1,0 +1,146 @@
+MainDbContext.cs 658 ==>                 throw;
+Surronding Lines
+            catch (Exception ex)
+            {
+                UTIL.TraceHelper.Error(UTIL.TraceCategory.IntegrationLog,
+                                string.Format("Error occured while loading vendor product for specified parameters: ProductId {0}, CompanyId {1}, ChannelId {2}, DivisionId {3}, BranchId {4}, LoanOfficerId {5}", productId, companyId, channelId, divisionId, branchId, loanOfficerId), ex);
+                throw;
+            }
+        }
+
+        public List<IntegrationSettingResult> GetIntegrationSettings(int integrationCredentialId)
+        {
+DataContext.cs 883 ==>                 credential = efctx.GetIntegrationCredentialByProduct(productId, companyId, channelId, divisionId, branchId, loanOfficerId);
+Surronding Lines
+            List<EF.IntegrationSettingResult> settingResults;
+
+            using (var efctx = new EF.MainDbContext(CONFIG.ConnStr, false, false))
+            {
+                credential = efctx.GetIntegrationCredentialByProduct(productId, companyId, channelId, divisionId, branchId, loanOfficerId);
+
+                if (credential == null)
+                    throw new ArgumentNullException(nameof(credential), "Integration Credentials not found.");
+
+                settingResults = efctx.GetIntegrationSettings(credential.IntegrationCredentialId);
+ProviderHelperFactory.cs 85 ==>             IntegrationVendorProduct vendorProduct = DataContext.GetIntegrationVendorProductByProduct(product.GetIntValue(), companyId, channelId, divisionId, branchId, loanOfficerId);
+Surronding Lines
+        }
+
+        private static IntegrationVendorProduct GetIntegrationVendorProduct(ProductTypeEnum product, Guid companyId, int? channelId, int? divisionId, Guid? branchId, int? loanOfficerId)
+        {
+            IntegrationVendorProduct vendorProduct = DataContext.GetIntegrationVendorProductByProduct(product.GetIntValue(), companyId, channelId, divisionId, branchId, loanOfficerId);
+
+            if (vendorProduct == null)
+                throw new Exception(string.Format("Unable to find VendorProduct for product {0}.", product));
+
+            return vendorProduct;,17 ==>             IntegrationVendorProduct vendorProduct = GetIntegrationVendorProduct(product, companyId, channelId, divisionId, branchId, loanOfficerId);
+Surronding Lines
+    public static class ProviderHelperFactory
+    {
+        public static IProviderHelper GetProviderHelper(ProductTypeEnum product, Guid companyId, int? channelId, int? divisionId, Guid? branchId, int? loanOfficerId)
+        {
+            IntegrationVendorProduct vendorProduct = GetIntegrationVendorProduct(product, companyId, channelId, divisionId, branchId, loanOfficerId);
+
+            if (vendorProduct == null)
+                throw new Exception("Vendor Product relationship not found.");
+
+            IProviderHelper helper = GetProviderHelper(vendorProduct);
+IntegrationServiceBase.cs 161 ==>             IProviderHelper providerHelper = ProviderHelperFactory.GetProviderHelper(this.ProductType, callerContext.CompanyId, callerContext.ChannelId, callerContext.DivisionId, callerContext.BranchId, callerContext.LoanOfficerAccountId);
+Surronding Lines
+        }
+
+        protected virtual IProviderHelper GetProviderHelper(CallerContext callerContext) 
+        {
+            IProviderHelper providerHelper = ProviderHelperFactory.GetProviderHelper(this.ProductType, callerContext.CompanyId, callerContext.ChannelId, callerContext.DivisionId, callerContext.BranchId, callerContext.LoanOfficerAccountId);
+            this.LogProvider.LogInfoFormatted("{0} - Provider helper loaded successfully.", this.ServiceName);
+            return providerHelper;
+        }
+
+        protected virtual void TransformIntegrationRequestToVendorRequest(IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context),155 ==>             IProviderHelper providerHelper = GetProviderHelper(callerContext);
+Surronding Lines
+        }
+
+        private IProviderHelper GetProviderHelperInternal(CallerContext callerContext) 
+        {
+            IProviderHelper providerHelper = GetProviderHelper(callerContext);
+            return providerHelper;
+        }
+
+        protected virtual IProviderHelper GetProviderHelper(CallerContext callerContext) 
+        {,46 ==>             IProviderHelper providerHelper = this.GetProviderHelperInternal(request.CallerContext);
+Surronding Lines
+        }
+
+        protected override ServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> GetServiceContext(ServiceRequest<requestType> request, ServiceResponse<responseType> response)
+        {
+            IProviderHelper providerHelper = this.GetProviderHelperInternal(request.CallerContext);
+            ProviderData providerData = providerHelper.GetProviderData<requestType>(request);
+            IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context = 
+                                    new IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>>()
+                                    {
+                                        Request = request,
+ServiceBase.cs 64 ==>                     context = GetServiceContext(request, response);
+Surronding Lines
+
+                try
+                {
+                    this.LogProvider.LogInfoFormatted("{0} - Service request received. {1}", this.ServiceName, callerContext.ToString());
+                    context = GetServiceContext(request, response);
+                    context.TrackingProvider = trackingProvider;
+                    OnBeforeStartProcessing(context);
+
+                    response.CallerContext = request.CallerContext;
+                    response.RequestDateTime = DateTime.Now;
+System.InvalidCastException: Specified cast is not valid.
+  
+		at MML.Data.EF.MainDbContext.GetIntegrationCredentialByProduct(Int32 productId, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.Data.EF\MainDbContext.cs:line 658
+  
+		at MML.DataAccess.CDM.DataContext.GetIntegrationVendorProductByProduct(Int32 productId, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.DataAccess.CDM\DataContext.cs:line 883
+  
+		at MML.Services.Integrations.Common.Services.ProviderHelperFactory.GetIntegrationVendorProduct(ProductTypeEnum product, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\ProviderHelperFactory.cs:line 85
+  
+		at MML.Services.Integrations.Common.Services.ProviderHelperFactory.GetProviderHelper(ProductTypeEnum product, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\ProviderHelperFactory.cs:line 17
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.GetProviderHelper(CallerContext callerContext)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 161
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.GetProviderHelperInternal(CallerContext callerContext)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 155
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.GetServiceContext(ServiceRequest`1 request, ServiceResponse`1 response)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 46
+  
+		at MML.Services.Platform.Common.Services.ServiceBase`2.GetServiceResponse(ServiceRequest`1 request)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Platform\MML.Services.Platform.Common.Services\ServiceBase.cs:line 64
+
+--------------------------------- Full Log File
+
+--------------------System.InvalidCastException: Specified cast is not valid.
+  
+		at MML.Data.EF.MainDbContext.GetIntegrationCredentialByProduct(Int32 productId, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.Data.EF\MainDbContext.cs:line 658
+  
+		at MML.DataAccess.CDM.DataContext.GetIntegrationVendorProductByProduct(Int32 productId, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.DataAccess.CDM\DataContext.cs:line 883
+  
+		at MML.Services.Integrations.Common.Services.ProviderHelperFactory.GetIntegrationVendorProduct(ProductTypeEnum product, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\ProviderHelperFactory.cs:line 85
+  
+		at MML.Services.Integrations.Common.Services.ProviderHelperFactory.GetProviderHelper(ProductTypeEnum product, Guid companyId, Nullable`1 channelId, Nullable`1 divisionId, Nullable`1 branchId, Nullable`1 loanOfficerId)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\ProviderHelperFactory.cs:line 17
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.GetProviderHelper(CallerContext callerContext)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 161
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.GetProviderHelperInternal(CallerContext callerContext)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 155
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.GetServiceContext(ServiceRequest`1 request, ServiceResponse`1 response)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 46
+  
+		at MML.Services.Platform.Common.Services.ServiceBase`2.GetServiceResponse(ServiceRequest`1 request)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Platform\MML.Services.Platform.Common.Services\ServiceBase.cs:line 64

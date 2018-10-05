@@ -1,0 +1,61 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+EmailService.cs 67,196
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.LoanCenter.Services.Common.EmailService.&amp;lt;&amp;gt;c__DisplayClass0_0.&amp;lt;SendEmailAsync&amp;gt;b__0()
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Common\EmailService.cs:line 67  
+		at MML.LoanCenter.Services.Common.EmailService.PrepareEmail(Guid loanId, String emailTemplateTitle, IList`1 emailTo, EmailFromConfig emailFrom, Object data)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Common\EmailService.cs:line 196
+  
+		at MML.LoanCenter.Services.Common.EmailService.&lt;&gt;c__DisplayClass0_0.&lt;SendEmailAsync&gt;b__0()
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Common\EmailService.cs:line 67</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Services.Common.EmailService.&amp;lt;&amp;gt;c__DisplayClass0_0.&amp;lt;SendEmailAsync&amp;gt;b__0()
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Common\EmailService.cs:line 67&amp;#xD;&amp;#xA;  
+		at System.Threading.Tasks.Task`1.InnerInvoke()&amp;#xD;&amp;#xA;  
+		at System.Threading.Tasks.Task.Execute()&amp;#xD;&amp;#xA;  
+		at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)&amp;#xD;&amp;#xA;  
+		at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)&amp;#xD;&amp;#xA;  
+		at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task&amp;amp; currentTaskSlot)&amp;#xD;&amp;#xA;  
+		at System.Threading.Tasks.Task.ExecuteEntry(Boolean bPreventDoubleExecution)&amp;#xD;&amp;#xA;  
+		at System.Threading.ThreadPoolWorkQueue.Dispatch()</Callstack><ExceptionInformation Type="System.NullReferenceException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Object reference not set to an instance of an object.</Message><Source>MML.LoanCenter.Services</Source><TargetSite>PrepareEmail</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at MML.LoanCenter.Services.Common.EmailService.PrepareEmail(Guid loanId, String emailTemplateTitle, IList`1 emailTo, EmailFromConfig emailFrom, Object data)
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Common\EmailService.cs:line 196
+  
+		at MML.LoanCenter.Services.Common.EmailService.&lt;&gt;c__DisplayClass0_0.&lt;SendEmailAsync&gt;b__0()
+	in C:\TFS_agent\_work\81\s\br\MML.LoanCenter.Services\Common\EmailService.cs:line 67</StackTrace></ExceptionInformation>

@@ -1,0 +1,122 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+DigitalDocsService.cs 1613,1205,971
+ProcessResponseData.cs 33
+EventsService.cs 102
+OperationHandler.cs 116
+Service.cs 63
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.Services.DigitalDocsService.ApplyLOSignature(Guid loanId, Int32 userAccountId, DocumentClass documentClass, String originatorUsername, Boolean useOriginatorUsername)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.DigitalDocs\DigitalDocsService.cs:line 1613  
+		at MML.Services.DigitalDocsService.UpdateDigitalDocsDocumentPackage(Guid loanId, DocumentPackageType docType, Byte[] documentData, String signatureCoordinates, String intentToProceedCode, Int32 userAccountId, Boolean hasCaf, SigningMethodAndDocTypeModel signingMethodAndDocTypeModel, Boolean doNotTrackDisclosures, Boolean executeActivityRulesConcierge)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.DigitalDocs\DigitalDocsService.cs:line 1205  
+		at MML.Services.DigitalDocsService.ProcessResponseData(Guid loanId, DocumentPackageType packageType, String intentToProceedCode, Int32 userAccountId, String data, Guid requestId, SigningMethodAndDocTypeModel methodAndDocTypeModel, Boolean doNotTrackDisclosures, Boolean executeActivityRulesConcierge)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.DigitalDocs\DigitalDocsService.cs:line 971  
+		at MML.iMP.Disclosures.Activities.ProcessResponseData.Execute(CodeActivityContext context)
+	in C:\TFS_agent\_work\18\s\br\MML\iMP\Disclosures\Activities\ProcessResponseData.cs:line 33  
+		at MML.iMP.Events.EventsService.Handle(EventHandlerInvokeRequest message)
+	in C:\TFS_agent\_work\18\s\br\MML\iMP\Events\Services\EventsService.cs:line 102  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\Service.cs:line 63  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><NULL xmlns="http://www.meandmyloan.com/2009/01/Serialization">object is null</NULL>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.Services.DigitalDocsService.ApplyLOSignature(Guid loanId, Int32 userAccountId, DocumentClass documentClass, String originatorUsername, Boolean useOriginatorUsername)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.DigitalDocs\DigitalDocsService.cs:line 1613&amp;#xD;&amp;#xA;  
+		at MML.Services.DigitalDocsService.UpdateDigitalDocsDocumentPackage(Guid loanId, DocumentPackageType docType, Byte[] documentData, String signatureCoordinates, String intentToProceedCode, Int32 userAccountId, Boolean hasCaf, SigningMethodAndDocTypeModel signingMethodAndDocTypeModel, Boolean doNotTrackDisclosures, Boolean executeActivityRulesConcierge)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.DigitalDocs\DigitalDocsService.cs:line 1205&amp;#xD;&amp;#xA;  
+		at MML.Services.DigitalDocsService.ProcessResponseData(Guid loanId, DocumentPackageType packageType, String intentToProceedCode, Int32 userAccountId, String data, Guid requestId, SigningMethodAndDocTypeModel methodAndDocTypeModel, Boolean doNotTrackDisclosures, Boolean executeActivityRulesConcierge)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.DigitalDocs\DigitalDocsService.cs:line 971&amp;#xD;&amp;#xA;  
+		at MML.iMP.Disclosures.Activities.ProcessResponseData.Execute(CodeActivityContext context)
+	in C:\TFS_agent\_work\18\s\br\MML\iMP\Disclosures\Activities\ProcessResponseData.cs:line 33&amp;#xD;&amp;#xA;  
+		at System.Activities.CodeActivity.InternalExecute(ActivityInstance instance, ActivityExecutor executor, BookmarkManager bookmarkManager)&amp;#xD;&amp;#xA;  
+		at System.Activities.ActivityInstance.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.TryExecuteNonEmptyWorkItem(WorkItem workItem)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.OnExecuteWorkItem(WorkItem workItem)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.Scheduler.Callbacks.ExecuteWorkItem(WorkItem workItem)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.Scheduler.OnScheduledWork(Object state)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.SendOrPostThunk.UnhandledExceptionFrame(Object state)&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowApplication.PumpBasedSynchronizationContext.WorkItem.Invoke()&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowApplication.PumpBasedSynchronizationContext.DoPump()&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowApplication.Invoke(Activity activity, IDictionary`2 inputs, WorkflowInstanceExtensionManager extensions, TimeSpan timeout)&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowInvoker.Invoke(Activity workflow, IDictionary`2 inputs, TimeSpan timeout, WorkflowInstanceExtensionManager extensions)&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowInvoker.Invoke(Activity workflow, IDictionary`2 inputs)&amp;#xD;&amp;#xA;  
+		at MML.iMP.Events.EventsService.Handle(EventHandlerInvokeRequest message)
+	in C:\TFS_agent\_work\18\s\br\MML\iMP\Events\Services\EventsService.cs:line 102&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\Service.cs:line 63&amp;#xD;&amp;#xA;  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp;amp; outputs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.DispatchAndReleasePump(RequestContext request, Boolean cleanThread, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.HandleRequest(RequestContext request, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.AsyncMessagePump(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.OnAsyncReceiveComplete(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceiveAsyncResult.OnReceive(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SynchronizedMessageSource.ReceiveAsyncResult.OnReceiveComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SessionConnectionReader.OnAsyncReadComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.FinishRead()&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsync(Object sender, SocketAsyncEventArgs eventArgs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsyncCompleted(Object sender, SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.FinishOperationSuccess(SocketError socketError, Int32 bytesTransferred, SocketFlags flags)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.CompletionPortCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* nativeOverlapped)&amp;#xD;&amp;#xA;  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><NULL xmlns="http://www.meandmyloan.com/2009/01/Serialization">object is null</NULL>

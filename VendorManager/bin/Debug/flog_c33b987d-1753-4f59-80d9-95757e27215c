@@ -1,0 +1,149 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,65
+ServiceBrokerSingleton.cs 226,184,179,169,191
+ServiceBroker.cs 37
+ExecuteEncompassIntegrations.cs 32
+IntegrationsService.cs 78
+OperationHandler.cs 116
+Service.cs 63
+ServiceClient.cs 233,187
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 65  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](ServiceMessage message, ServiceResult`2 portSet, Boolean useOnlyExceptionPort)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 226  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](ServiceMessage message, ServiceResult`2 portSet)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 184  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](String operationName, Object message, ServiceResult`2 portSet)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 179  
+		at MML.ServiceModel.ServiceBroker.Invoke[TSuccess,TFailure](String operationName, Object message, ServiceResult`2 portSet)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBroker.cs:line 37  
+		at MML.iMP.Encompass.Activities.ExecuteEncompassIntegrations.Execute(CodeActivityContext context)
+	in C:\CODE\iMP\126\FB.126.WestVM\MML\iMP\Encompass\Activities\ExecuteEncompassIntegrations.cs:line 32  
+		at MML.iMP.Integrations.IntegrationsService.Handle(IntegrationInvokeRequest message)
+	in C:\CODE\iMP\126\FB.126.WestVM\MML\iMP\Integrations\Services\IntegrationsService.cs:line 78  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\Service.cs:line 63  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )  
+		at MML.ServiceModel.ServiceClient.InvokeSync(ServiceMessage message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceClient.cs:line 233
+  
+		at MML.ServiceModel.ServiceClient.Invoke(ServiceMessage message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceClient.cs:line 187
+  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke(ServiceMessage message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 169
+  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](ServiceMessage message, ServiceResult`2 portSet, Boolean useOnlyExceptionPort)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 191</StackTrace></ExceptionInformation><MML.ServiceModel.Common.ServiceMessage xmlns="http://www.meandmyloan.com/2009/01/Serialization"><ServiceMessage action="MML.Services.URLADeliveryService.External"><Header referenceId="" correlationId="75dbc6e8-534f-4867-a20c-1a96436a65d1" trackingId="8478b3df-46a5-43b5-a867-d4f778829e90" topic="" debug="false"></Header><Content p2:type="MML.Contracts.ProcessExportToEncompass" p2:assembly="iMP.Contracts, Version=4.1.1000.89, Culture=neutral, PublicKeyToken=null" xmlns:p2="http://schemas.microsoft.com/2003/10/Serialization/"><any0><ProcessExportToEncompass xmlns=""><UserAccountId>82313</UserAccountId><AutoComplianceCheck>false</AutoComplianceCheck><AutoSendSecureLink>false</AutoSendSecureLink><CocTrackingWorkflowTypeId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></CocTrackingWorkflowTypeId><ComplianceCheck>false</ComplianceCheck><IsDisclosureTriggered>false</IsDisclosureTriggered><IsInitialExport>true</IsInitialExport><LoanId>3debc832-4dbb-4b08-89f5-bd5723200122</LoanId><LoanProductId></LoanProductId><RequestDigitalPackages>false</RequestDigitalPackages></ProcessExportToEncompass></any0></Content></ServiceMessage></MML.ServiceModel.Common.ServiceMessage>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 65&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](ServiceMessage message, ServiceResult`2 portSet, Boolean useOnlyExceptionPort)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 226&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](ServiceMessage message, ServiceResult`2 portSet)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 184&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](String operationName, Object message, ServiceResult`2 portSet)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 179&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.ServiceBroker.Invoke[TSuccess,TFailure](String operationName, Object message, ServiceResult`2 portSet)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBroker.cs:line 37&amp;#xD;&amp;#xA;  
+		at MML.iMP.Encompass.Activities.ExecuteEncompassIntegrations.Execute(CodeActivityContext context)
+	in C:\CODE\iMP\126\FB.126.WestVM\MML\iMP\Encompass\Activities\ExecuteEncompassIntegrations.cs:line 32&amp;#xD;&amp;#xA;  
+		at System.Activities.CodeActivity.InternalExecute(ActivityInstance instance, ActivityExecutor executor, BookmarkManager bookmarkManager)&amp;#xD;&amp;#xA;  
+		at System.Activities.ActivityInstance.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.ExecuteBody(ActivityExecutor executor, BookmarkManager bookmarkManager, Location resultLocation)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.ExecuteActivityWorkItem.Execute(ActivityExecutor executor, BookmarkManager bookmarkManager)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.TryExecuteNonEmptyWorkItem(WorkItem workItem)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.ActivityExecutor.OnExecuteWorkItem(WorkItem workItem)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.Scheduler.Callbacks.ExecuteWorkItem(WorkItem workItem)&amp;#xD;&amp;#xA;  
+		at System.Activities.Runtime.Scheduler.OnScheduledWork(Object state)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.SendOrPostThunk.UnhandledExceptionFrame(Object state)&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowApplication.PumpBasedSynchronizationContext.WorkItem.Invoke()&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowApplication.PumpBasedSynchronizationContext.DoPump()&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowApplication.Invoke(Activity activity, IDictionary`2 inputs, WorkflowInstanceExtensionManager extensions, TimeSpan timeout)&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowInvoker.Invoke(Activity workflow, IDictionary`2 inputs, TimeSpan timeout, WorkflowInstanceExtensionManager extensions)&amp;#xD;&amp;#xA;  
+		at System.Activities.WorkflowInvoker.Invoke(Activity workflow, IDictionary`2 inputs)&amp;#xD;&amp;#xA;  
+		at MML.iMP.Integrations.IntegrationsService.Handle(IntegrationInvokeRequest message)
+	in C:\CODE\iMP\126\FB.126.WestVM\MML\iMP\Integrations\Services\IntegrationsService.cs:line 78&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\Service.cs:line 63&amp;#xD;&amp;#xA;  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp;amp; outputs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.DispatchAndReleasePump(RequestContext request, Boolean cleanThread, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.HandleRequest(RequestContext request, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.AsyncMessagePump(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.OnAsyncReceiveComplete(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceiveAsyncResult.OnReceive(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SynchronizedMessageSource.ReceiveAsyncResult.OnReceiveComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SessionConnectionReader.OnAsyncReadComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.FinishRead()&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsync(Object sender, SocketAsyncEventArgs eventArgs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsyncCompleted(Object sender, SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.FinishOperationSuccess(SocketError socketError, Int32 bytesTransferred, SocketFlags flags)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.CompletionPortCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* nativeOverlapped)&amp;#xD;&amp;#xA;  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><ExceptionInformation Type="System.InvalidOperationException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Service did not respond (service: 'MML.Services.URLADeliveryService.External', retry count: '1').</Message><Source>MML.ServiceModel</Source><TargetSite>InvokeSync</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at MML.ServiceModel.ServiceClient.InvokeSync(ServiceMessage message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceClient.cs:line 233
+  
+		at MML.ServiceModel.ServiceClient.Invoke(ServiceMessage message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceClient.cs:line 187
+  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke(ServiceMessage message)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 169
+  
+		at MML.ServiceModel.ServiceBrokerSingleton.Invoke[TSuccess,TFailure](ServiceMessage message, ServiceResult`2 portSet, Boolean useOnlyExceptionPort)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceBrokerSingleton.cs:line 191</StackTrace></ExceptionInformation><MML.ServiceModel.Common.ServiceMessage xmlns="http://www.meandmyloan.com/2009/01/Serialization"><ServiceMessage action="MML.Services.URLADeliveryService.External"><Header referenceId="" correlationId="75dbc6e8-534f-4867-a20c-1a96436a65d1" trackingId="8478b3df-46a5-43b5-a867-d4f778829e90" topic="" debug="false"></Header><Content p2:type="MML.Contracts.ProcessExportToEncompass" p2:assembly="iMP.Contracts, Version=4.1.1000.89, Culture=neutral, PublicKeyToken=null" xmlns:p2="http://schemas.microsoft.com/2003/10/Serialization/"><any0><ProcessExportToEncompass xmlns=""><UserAccountId>82313</UserAccountId><AutoComplianceCheck>false</AutoComplianceCheck><AutoSendSecureLink>false</AutoSendSecureLink><CocTrackingWorkflowTypeId xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"></CocTrackingWorkflowTypeId><ComplianceCheck>false</ComplianceCheck><IsDisclosureTriggered>false</IsDisclosureTriggered><IsInitialExport>true</IsInitialExport><LoanId>3debc832-4dbb-4b08-89f5-bd5723200122</LoanId><LoanProductId></LoanProductId><RequestDigitalPackages>false</RequestDigitalPackages></ProcessExportToEncompass></any0></Content></ServiceMessage></MML.ServiceModel.Common.ServiceMessage>

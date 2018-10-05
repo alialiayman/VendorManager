@@ -1,0 +1,97 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,65
+EncompassHelper.cs 86,44,78
+EncompassImporter.cs 7595
+URLADeliveryService.cs 2067,436
+OperationHandler.cs 116
+ServiceExternal.cs 192,74
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 65  
+		at Skyline.Encompass.EncompassHelper.LockLoanInt(Loan loan, String iMPLoanNumber)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassHelper.cs:line 86  
+		at Skyline.Encompass.EncompassHelper.LockLoan(Loan loan, String iMPLoanNumber, Boolean defaultValue)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassHelper.cs:line 44  
+		at Skyline.Encompass.EncompassImporter.TrackDisclosures(Boolean isOnlineUser, DisclosureTrackingType disclosuresTrackingType, String encompassBorrowerPairId, TrackEConsent eConsentTracking, Audit addToAudit, DocDeliveryTypeEnum docDelivery)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassImporter.cs:line 7595  
+		at MML.Services.URLADeliveryService.TrackDisclosures(Guid loanId, String loanNumber, DisclosureTrackingType disclosuresTrackingType, String loanFolder, Boolean isOnlineUser, DateTime date, String encompassBorrowerPairId, TrackEConsent eConsentTracking, Audit audit)
+	in C:\TFS_agent\_work\43\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2067  
+		at MML.Services.URLADeliveryService.Handle(TrackDisclosures message)
+	in C:\TFS_agent\_work\43\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 436  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.ServiceExternal.ProcessRequestThread(ServiceMessage requestMessage, String operationName, String messageId, ManualResetEventSlim completionEvent, Boolean&amp;amp; failure)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceExternal.cs:line 192  
+		at MML.ServiceModel.ServiceExternal.&amp;lt;&amp;gt;c__DisplayClass0_0.&amp;lt;Process&amp;gt;b__0()
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceExternal.cs:line 74  
+		at EllieMae.Encompass.BusinessObjects.Loans.Loan.Lock(Boolean exclusive)
+  
+		at EllieMae.Encompass.BusinessObjects.Loans.Loan.Lock()
+  
+		at Skyline.Encompass.EncompassHelper.LockLoanInt(Loan loan, String iMPLoanNumber)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassHelper.cs:line 78</StackTrace></ExceptionInformation><System.String xmlns="http://www.meandmyloan.com/2009/01/Serialization"><string>Loan with loan number 5469460 was locked by cloudvirgauser on 4/13/2018 4:10:46 PM. Lock was exclusive: True</string></System.String>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Exception ex)
+	in C:\TFS_agent\_work\58\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 65&amp;#xD;&amp;#xA;  
+		at Skyline.Encompass.EncompassHelper.LockLoanInt(Loan loan, String iMPLoanNumber)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassHelper.cs:line 86&amp;#xD;&amp;#xA;  
+		at Skyline.Encompass.EncompassHelper.LockLoan(Loan loan, String iMPLoanNumber, Boolean defaultValue)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassHelper.cs:line 44&amp;#xD;&amp;#xA;  
+		at Skyline.Encompass.EncompassImporter.TrackDisclosures(Boolean isOnlineUser, DisclosureTrackingType disclosuresTrackingType, String encompassBorrowerPairId, TrackEConsent eConsentTracking, Audit addToAudit, DocDeliveryTypeEnum docDelivery)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassImporter.cs:line 7595&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.TrackDisclosures(Guid loanId, String loanNumber, DisclosureTrackingType disclosuresTrackingType, String loanFolder, Boolean isOnlineUser, DateTime date, String encompassBorrowerPairId, TrackEConsent eConsentTracking, Audit audit)
+	in C:\TFS_agent\_work\43\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2067&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.Handle(TrackDisclosures message)
+	in C:\TFS_agent\_work\43\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 436&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.ServiceExternal.ProcessRequestThread(ServiceMessage requestMessage, String operationName, String messageId, ManualResetEventSlim completionEvent, Boolean&amp;amp; failure)
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceExternal.cs:line 192&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.ServiceExternal.&amp;lt;&amp;gt;c__DisplayClass0_0.&amp;lt;Process&amp;gt;b__0()
+	in C:\TFS_agent\_work\53\s\Trunk.126\MML.ServiceModel\ServiceExternal.cs:line 74&amp;#xD;&amp;#xA;  
+		at System.Threading.ThreadHelper.ThreadStart_Context(Object state)&amp;#xD;&amp;#xA;  
+		at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)&amp;#xD;&amp;#xA;  
+		at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)&amp;#xD;&amp;#xA;  
+		at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)&amp;#xD;&amp;#xA;  
+		at System.Threading.ThreadHelper.ThreadStart()</Callstack><ExceptionInformation Type="EllieMae.Encompass.BusinessObjects.Loans.LockException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Object is locked by user 'cloudvirgauser'</Message><Source>EncompassObjects</Source><TargetSite>Lock</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at EllieMae.Encompass.BusinessObjects.Loans.Loan.Lock(Boolean exclusive)
+  
+		at EllieMae.Encompass.BusinessObjects.Loans.Loan.Lock()
+  
+		at Skyline.Encompass.EncompassHelper.LockLoanInt(Loan loan, String iMPLoanNumber)
+	in C:\TFS_agent\_work\43\s\br\Skyline.Encompass\EncompassHelper.cs:line 78</StackTrace></ExceptionInformation><System.String xmlns="http://www.meandmyloan.com/2009/01/Serialization"><string>Loan with loan number 5469460 was locked by cloudvirgauser on 4/13/2018 4:10:46 PM. Lock was exclusive: True</string></System.String>

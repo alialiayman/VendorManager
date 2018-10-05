@@ -1,0 +1,62 @@
+﻿AFN (American Financial Network) RC01,AFNRC01SSQL01.cloudvirga.local
+AFN (American Financial Network) UAT01,AFNUAT01SSQL01.cloudvirga.local
+AFN (American Financial Network) UAT01 - Eric Winblad,AFNUAT01SSQL01.cloudvirga.local
+AFN (American Financial Network) UAT01 - John Sherman,AFNUAT01SSQL01.cloudvirga.local
+AFN (American Financial Network) UAT01 - Matthew Maine,AFNUAT01SSQL01.cloudvirga.local
+AFN (American Financial Network) UAT01 - Richard Winton,AFNUAT01SSQL01.cloudvirga.local
+AFN (American Financial Network) Prod,AFNPRD01ASQL01.afn-cv.local
+AFN (American Financial Network) UAT02,AFNU02D1SSQLA01.cloudvirga.local
+CAP (CapWest) Prod,CAPPRD01ASQL01.cap-cv.local
+CAP (CapWest) UAT01,CAPUAT01SSQL01.cloudvirga.local
+CAP (CapWest) RC01,CAPRC01SSQL01.cloudvirga.local
+CAP (CapWest) UAT02,CAPU02D1SSQLA01.cloudvirga.local
+CV-DEMO01,CLODMO01SSQL01.cloudvirga.local
+CV-DEMO02,CLOM02D1SSQLA01.cloudvirga.local
+CV-DEV01 (Security): WP Done,CLODEV01SSQL02.cloudvirga.local\Dev01
+CV-DEV02 (Redisclosures): No WP,CLODEV01SSQL02.cloudvirga.local\Dev02
+CV-DEV03 (Doc Library – Emerald Team): No WP,CLODEV03SSQL01.cloudvirga.local
+CV-DEV04 (4506-T – Reddy): WP Done,CLODEV04SSQL01.cloudvirga.local
+CV-DEV05 (Vendor Management – Muris/Blue Team): No WP,CLODEV05SSQL01.cloudvirga.local
+CV-DEV06 (Freedom/iWorkflow): WP Done,CLODEV06SSQL01.cloudvirga.local
+CV-DEV07 (LAB for future feature testing - Colin): WP Done,CLODEV07SSQL01.cloudvirga.local
+CV-DEV08 (Release management – Jesenko): WP Done,CLODEV08SSQL01.cloudvirga.local
+CV-DEV09 (TRUNK.3.6 for non-Freedom Target Release 3.7 - Lisa): WP Done,CLODEV09SSQL01.cloudvirga.local
+CV-DEV10 ($/iMP/3.6/FB.3.7-VelocifyLMS on 2017.08.04 PDT),CLODEV10SSQL01.cloudvirga.local
+CV-DEV11 (FB 3.6 Calc Refactor – Ravi/Emerald Team): WP Needed,CLODEV08SSQL01.cloudvirga.local
+CV-DEV12 (DocuTech – Elma/Amra/Ivan/Blue Team): WP Needed,CLODEV08SSQL01.cloudvirga.local
+CV-DEV13 FAM stabilization effort,CLODEV08SSQL01.cloudvirga.local
+CV-DEV14 (VA Loan Analysis) Red Team (Ramiz),CLODEV07SSQL01.cloudvirga.local
+CV-DEV15 (API Migration) Bob,CLODEV07SSQL01.cloudvirga.local
+CV-DEV16 VA Workflow (FB.3.7.FREEDOM) Huy (Cyan Team),CLODEV07SSQL01.cloudvirga.local
+CV-DEV17,CLODEV06SSQL01.cloudvirga.local
+CV-DEV18,CLODEV06SSQL01.cloudvirga.local
+CV-DEV19,CLODEV06SSQL01.cloudvirga.local
+CV-QA01,CLOQA01SSQL01.cloudvirga.local
+CV-QA02,CLOQA02SSQL01.cloudvirga.local
+CV-RC01,CLORC01SSQL01.cloudvirga.local
+CV-RC02,CLORC02SSQL01.cloudvirga.local
+CV-TST,CLOAWS01VSQL001.cloudvirga.local
+FAM (Finance of America) DEV / BETA,AZWDEVCVSQL01.corporate.local
+FAM (Finance of America) RC01,FAMRC01SSQL01.cloudvirga.local
+FAM (Finance of America) Test,AZWTSTCVSQL01.corporate.local
+FAM (Finance of America) UAT01,FAMUAT01SSQL01.cloudvirga.local
+FAM (Finance of America) UAT02,FAMU02D1SSQLA01.cloudvirga.local
+FMC (Freedom) RC01,FMCRC01SSQL01.cloudvirga.local
+FMC (Freedom) RC02,FMCRC02SSQL01.cloudvirga.local
+FMC (Freedom) UAT01,FMCUAT01SSQL01.cloudvirga.local
+FMC (Freedom) UAT02,FMCUAT02SSQL01.cloudvirga.local
+FMC (Freedom) UAT03,FMCUAT03SSQL01.cloudvirga.local
+FMC (Freedom) DEV,CLODEV01SSQL01.cloudvirga.local\TRUNK126,50740
+HPF (Home Point Financial) RC01,HPFR01D1SSQLA01.cloudvirga.local
+HPF (Home Point Financial) UAT01,HPFU01D1SSQLA01.cloudvirga.local
+PEM (Paramount Equity Mortgage®) Prod,PEMPRD01ASQL01.pem-cv.local
+PEM (Paramount Equity Mortgage®) RC01,PEMRC01SSQL01.cloudvirga.local
+PEM (Paramount Equity Mortgage®) UAT01,PEMUAT01SSQL01.cloudvirga.local
+PEM (Paramount Equity Mortgage®) UAT02,PEMU02D1SSQLA01.cloudvirga.local
+FIM (Fairway) RC01,FIMR01D1SSQLA01.cloudvirga.local
+FIM (Fairway) UA01,FIMU01D1SSQLA01.cloudvirga.local
+Skyline DEMO,SKYDMO01SSQL01.cloudvirga.local
+Skyline Production,SKYP01A1SSQLA01.skyline.local
+Skyline RC01,SKYRC01SSQL01.cloudvirga.local
+Skyline UAT01,SKYUAT01SSQL01.cloudvirga.local
+Skyline UAT02,SKYU02D1SSQLA01.cloudvirga.local

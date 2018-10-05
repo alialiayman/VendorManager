@@ -1,0 +1,115 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+URLADeliveryService.cs 2566,275,2561
+OperationHandler.cs 116
+Service.cs 63
+EncompassHelper.cs 153
+EncompassImporter.cs 9018
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.Services.URLADeliveryService.SaveAppraisalData(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2566  
+		at MML.Services.URLADeliveryService.Handle(WestVmAppraisalData message)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 275  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.ServiceModel\Service.cs:line 63  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )  
+		at EllieMae.Encompass.BusinessObjects.Loans.Loan.Lock(Boolean exclusive)
+  
+		at Skyline.Encompass.EncompassHelper.LockLoanExc(Loan loan, String iMPLoanNumber, Boolean exclusive)
+	in C:\TFS_agent\_work\18\s\br\Skyline.Encompass\EncompassHelper.cs:line 153
+  
+		at Skyline.Encompass.EncompassImporter.SaveAppraisalData(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\Skyline.Encompass\EncompassImporter.cs:line 9018
+  
+		at MML.Services.URLADeliveryService.SaveAppraisalData(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2561</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.SaveAppraisalData(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2566&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.Handle(WestVmAppraisalData message)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 275&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.ServiceModel\Service.cs:line 63&amp;#xD;&amp;#xA;  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp;amp; outputs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.DispatchAndReleasePump(RequestContext request, Boolean cleanThread, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.HandleRequest(RequestContext request, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.AsyncMessagePump(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.OnAsyncReceiveComplete(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceiveAsyncResult.OnReceive(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SynchronizedMessageSource.ReceiveAsyncResult.OnReceiveComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SessionConnectionReader.OnAsyncReadComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.FinishRead()&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsync(Object sender, SocketAsyncEventArgs eventArgs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsyncCompleted(Object sender, SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.FinishOperationSuccess(SocketError socketError, Int32 bytesTransferred, SocketFlags flags)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.CompletionPortCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* nativeOverlapped)&amp;#xD;&amp;#xA;  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><ExceptionInformation Type="EllieMae.Encompass.BusinessObjects.Loans.LockException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Object is locked by user 'cloudvirgauser'</Message><Source>EncompassObjects</Source><TargetSite>Lock</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at EllieMae.Encompass.BusinessObjects.Loans.Loan.Lock(Boolean exclusive)
+  
+		at Skyline.Encompass.EncompassHelper.LockLoanExc(Loan loan, String iMPLoanNumber, Boolean exclusive)
+	in C:\TFS_agent\_work\18\s\br\Skyline.Encompass\EncompassHelper.cs:line 153
+  
+		at Skyline.Encompass.EncompassImporter.SaveAppraisalData(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\Skyline.Encompass\EncompassImporter.cs:line 9018
+  
+		at MML.Services.URLADeliveryService.SaveAppraisalData(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2561</StackTrace></ExceptionInformation>

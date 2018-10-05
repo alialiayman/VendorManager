@@ -1,0 +1,144 @@
+WestVmHelper.cs 234 ==>                     LogProvider.LogInfo($"Payment already Processed {isPaymentAlreadyProcessedYesNo}, Amount {amount:C0}, Paid By {Enum.GetName(typeof(AppraisalPaidByEnum), orderAppraisal)}, Nonce {nonce}");
+Surronding Lines
+                    var paymentStatus = orderAppraisal.PaymentStatus;
+                    var isPaymentAlreadyProcessed = paymentStatus.HasValue && paymentStatus.Value == (int) LCX.PaymentStatus.Processed;
+                    var isPaymentAlreadyProcessedYesNo = isPaymentAlreadyProcessed ? "Yes" : "No";
+                    var amount = orderAppraisal.OrderAppraisalProductsFees == null ? 0.0m : Convert.ToDecimal(orderAppraisal.OrderAppraisalProductsFees.Sum(x => x.FeeAmount));
+                    LogProvider.LogInfo($"Payment already Processed {isPaymentAlreadyProcessedYesNo}, Amount {amount:C0}, Paid By {Enum.GetName(typeof(AppraisalPaidByEnum), orderAppraisal)}, Nonce {nonce}");
+                    if (!isPaymentAlreadyProcessed && orderAppraisal.PaidBy == AppraisalPaidByEnum.Borrower && !string.IsNullOrEmpty(nonce) && amount > 0.0m)
+                    {
+                        LogProvider.LogInfo($"Attempting to process appraisal payment of {amount:C0} for loan ID {ContextData.LoanId.GetValueOrDefault()}");
+                        var paymentProcessingService = new CanonicPaymentProcesssingService();
+                        var response = paymentProcessingService.SubmitCreditCardCharge(amount, nonce, ContextData);
+AppraisalService.cs 200 ==>                     vendorResponse = context.ProviderHelper.PostToProvider(context.VendorRequest.ToString(),
+Surronding Lines
+                string vendorResponse;
+                if (context.ProviderHelper is WestVmHelper)
+                {
+                    LogProvider.LogInfoFormatted("{0} - Attempting to post to WestVM.", ServiceName);
+                    vendorResponse = context.ProviderHelper.PostToProvider(context.VendorRequest.ToString(),
+                        context.ProviderData.Provider_Url, context.ProviderData.Provider_UserName,
+                        context.ProviderData.Provider_Password, context.ProviderData.Settings);
+                }
+                else
+                {,223 ==>                 throw new Exception($"Error in {this.ServiceName}. Unable to Post to Vendor.", ex);
+Surronding Lines
+                throw;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error in {this.ServiceName}. Unable to Post to Vendor.", ex);
+            }
+        }
+
+        protected override void TransformVendorResponseToIntegrationResponse(IntegrationServiceContext<ServiceRequest<AppraisalRequest>, ServiceResponse<AppraisalResponse>> context)
+        {,169 ==>                     base.ProcessIntegration(context);
+Surronding Lines
+
+                foreach (var westVmRequestType in westVmRequestList)
+                {
+                    westVmHelper.RequestType = westVmRequestType;
+                    base.ProcessIntegration(context);
+                }
+
+                context.Response.Status = westVmHelper.Successful
+                    ? Platform.Common.Enumerations.ServiceStatusEnum.Success
+                    : Platform.Common.Enumerations.ServiceStatusEnum.Failure;
+IntegrationServiceBase.cs 38 ==>             PostToVendor(context);
+Surronding Lines
+        protected virtual void ProcessIntegration(IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context)
+        {
+            TransformIntegrationRequestToVendorRequest(context);
+            OnBeforePostToVendor(context);
+            PostToVendor(context);
+            OnAfterPostToVendor(context);
+            TransformVendorResponseToIntegrationResponse(context);
+            OnAfterTransformResponse(context);
+        }
+,29 ==>             ProcessIntegration(context as IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>>);
+Surronding Lines
+    public abstract class IntegrationServiceBase<requestType, responseType> : ServiceBase<requestType, responseType>
+    {
+        protected override responseType DoProcess(ServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context)
+        {
+            ProcessIntegration(context as IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>>);
+
+            return context.Response.ResponseData;
+        }
+
+        protected virtual void ProcessIntegration(IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context)
+ServiceBase.cs 81 ==>                         response.ResponseData = DoProcess(context);
+Surronding Lines
+                            throw new RequestInvalidException("Service Validation failed.", messages);
+                        }
+
+                        OnStartProcessing(context);
+                        response.ResponseData = DoProcess(context);
+                    }
+                    catch (RequestInvalidException riex)
+                    {
+                        OnError(context, "Service validation failed", riex);
+                        response.Status = ServiceStatusEnum.Failure;
+System.Exception: Error
+	in AppraisalService. Unable to Post to Vendor. ---> System.ArgumentException: The value passed
+	in must be an enum base or an underlying type for an enum, such as an Int32.
+Parameter name: value
+  
+
+  
+
+  
+		at MML.Services.Integrations.Appraisal.Service.Helpers.WestVmHelper.PostToProvider(String xmlData, String url, String userid, String password, Object[] items)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\Helpers\WestVmHelper.cs:line 234
+  
+		at MML.Services.Integrations.Appraisal.Service.AppraisalService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\AppraisalService.cs:line 200
+   --- End of inner exception stack trace ---
+  
+		at MML.Services.Integrations.Appraisal.Service.AppraisalService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\AppraisalService.cs:line 223
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.ProcessIntegration(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 38
+  
+		at MML.Services.Integrations.Appraisal.Service.AppraisalService.ProcessIntegration(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\AppraisalService.cs:line 169
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.DoProcess(ServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 29
+  
+		at MML.Services.Platform.Common.Services.ServiceBase`2.GetServiceResponse(ServiceRequest`1 request)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Platform\MML.Services.Platform.Common.Services\ServiceBase.cs:line 81
+
+--------------------------------- Full Log File
+
+--------------------System.Exception: Error
+	in AppraisalService. Unable to Post to Vendor. ---> System.ArgumentException: The value passed
+	in must be an enum base or an underlying type for an enum, such as an Int32.
+Parameter name: value
+  
+		at System.RuntimeType.GetEnumName(Object value)
+  
+		at System.Enum.GetName(Type enumType, Object value)
+  
+		at MML.Services.Integrations.Appraisal.Service.Helpers.WestVmHelper.PostToProvider(String xmlData, String url, String userid, String password, Object[] items)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\Helpers\WestVmHelper.cs:line 234
+  
+		at MML.Services.Integrations.Appraisal.Service.AppraisalService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\AppraisalService.cs:line 200
+   --- End of inner exception stack trace ---
+  
+		at MML.Services.Integrations.Appraisal.Service.AppraisalService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\AppraisalService.cs:line 223
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.ProcessIntegration(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 38
+  
+		at MML.Services.Integrations.Appraisal.Service.AppraisalService.ProcessIntegration(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\Appraisal\Service\AppraisalService.cs:line 169
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.DoProcess(ServiceContext`2 context)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 29
+  
+		at MML.Services.Platform.Common.Services.ServiceBase`2.GetServiceResponse(ServiceRequest`1 request)
+	in C:\CODE\iMP\126\trunk.126\MML.Services\Platform\MML.Services.Platform.Common.Services\ServiceBase.cs:line 81

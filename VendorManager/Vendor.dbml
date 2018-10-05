@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Services" Class="VendorDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=CLODEV01SSQL01.cloudvirga.local\TRUNK126;Initial Catalog=Services;Integrated Security=True" SettingsObjectName="VendorManager.Properties.Settings" SettingsPropertyName="ServicesConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.IntegrationServiceType" Member="IntegrationServiceTypes">
+    <Type Name="IntegrationServiceType">
+      <Column Name="IntegrationServiceTypeId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descr" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IntegrationServiceType_IntegrationProduct" Member="IntegrationProducts" ThisKey="IntegrationServiceTypeId" OtherKey="IntegrationServiceTypeId" Type="IntegrationProduct" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationVendor" Member="IntegrationVendors">
+    <Type Name="IntegrationVendor">
+      <Column Name="IntegrationVendorId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Descr" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SchemaType" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IntegrationVendor_IntegrationVendorProduct" Member="IntegrationVendorProducts" ThisKey="IntegrationVendorId" OtherKey="IntegrationVendorId" Type="IntegrationVendorProduct" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationVendorProduct" Member="IntegrationVendorProducts">
+    <Type Name="IntegrationVendorProduct">
+      <Column Name="IntegrationVendorProductId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntegrationProductId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IntegrationVendorId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IntegrationHelperFQN" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="SimulatorURL" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Comments" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IntegrationVendor_IntegrationVendorProduct" Member="IntegrationVendor" ThisKey="IntegrationVendorId" OtherKey="IntegrationVendorId" Type="IntegrationVendor" IsForeignKey="true" />
+      <Association Name="IntegrationProduct_IntegrationVendorProduct" Member="IntegrationProduct" ThisKey="IntegrationProductId" OtherKey="IntegrationProductId" Type="IntegrationProduct" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationProduct" Member="IntegrationProducts">
+    <Type Name="IntegrationProduct">
+      <Column Name="IntegrationProductId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="IntegrationServiceTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Descr" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="IsActive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IntegrationProduct_IntegrationVendorProduct" Member="IntegrationVendorProducts" ThisKey="IntegrationProductId" OtherKey="IntegrationProductId" Type="IntegrationVendorProduct" />
+      <Association Name="IntegrationServiceType_IntegrationProduct" Member="IntegrationServiceType" ThisKey="IntegrationServiceTypeId" OtherKey="IntegrationServiceTypeId" Type="IntegrationServiceType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationSettingType" Member="IntegrationSettingTypes">
+    <Type Name="IntegrationSettingType">
+      <Column Name="IntegrationSettingTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(1024) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descr" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="DataEntryType" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="DefatulValue" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Restrictions" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Association Name="IntegrationSettingType_IntegrationSettingTypeSourceObject" Member="IntegrationSettingTypeSourceObjects" ThisKey="IntegrationSettingTypeId" OtherKey="IntegrationSettingTypeId" Type="IntegrationSettingTypeSourceObject" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationSettingTypeSourceObject" Member="IntegrationSettingTypeSourceObjects">
+    <Type Name="IntegrationSettingTypeSourceObject">
+      <Column Name="IntegrationSettingTypeSourceObjectId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntegrationSettingTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IntegrationSourceObjectTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="IntegrationSettingTypeSourceObject_IntegrationSetting" Member="IntegrationSettings" ThisKey="IntegrationSettingTypeSourceObjectId" OtherKey="IntegrationSettingTypeSourceObjectId" Type="IntegrationSetting" />
+      <Association Name="IntegrationSettingType_IntegrationSettingTypeSourceObject" Member="IntegrationSettingType" ThisKey="IntegrationSettingTypeId" OtherKey="IntegrationSettingTypeId" Type="IntegrationSettingType" IsForeignKey="true" />
+      <Association Name="IntegrationSourceObjectType_IntegrationSettingTypeSourceObject" Member="IntegrationSourceObjectType" ThisKey="IntegrationSourceObjectTypeId" OtherKey="IntegrationSourceObjectTypeId" Type="IntegrationSourceObjectType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationSourceObjectType" Member="IntegrationSourceObjectTypes">
+    <Type Name="IntegrationSourceObjectType">
+      <Column Name="IntegrationSourceObjectTypeId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(1024)" CanBeNull="true" />
+      <Column Name="Descr" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="IntegrationSourceObjectType_IntegrationSettingTypeSourceObject" Member="IntegrationSettingTypeSourceObjects" ThisKey="IntegrationSourceObjectTypeId" OtherKey="IntegrationSourceObjectTypeId" Type="IntegrationSettingTypeSourceObject" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationSetting" Member="IntegrationSettings">
+    <Type Name="IntegrationSetting">
+      <Column Name="IntegrationSettingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntegrationSettingTypeSourceObjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SettingSourceObjectId" Type="System.String" DbType="VarChar(225)" CanBeNull="true" />
+      <Column Name="Value" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModifiedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IntegrationSettingTypeSourceObject_IntegrationSetting" Member="IntegrationSettingTypeSourceObject" ThisKey="IntegrationSettingTypeSourceObjectId" OtherKey="IntegrationSettingTypeSourceObjectId" Type="IntegrationSettingTypeSourceObject" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LogData" Member="LogDatas">
+    <Type Name="LogData">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DatabaseTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EventTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EventTimeStamp" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="EventType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Source" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EventId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MachineName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AppDomain" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProcessName" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ProcessId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ThreadId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CorrelationId" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="RelatedActivityId" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="AdditionalInfo" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="EventCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TrackingId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ReferenceId" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Loan" Member="Loans">
+    <Type Name="Loan">
+      <Column Name="LoanId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ProgramName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ProductTypeName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Rate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Apr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Prepay" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DiscountPoints" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MonthlyPayment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RecoupTime" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MonthlySavings" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OrderID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="TimeStamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="MortgageAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OpenDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="CloseDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TaxForms" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LoanType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserAccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LockDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AcceptedGFEandDisclosures" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AcceptedGFEandDisclosuresTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NumberOfMonths" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AmortizationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MortgageType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OptimalBlueIdentifier" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="LoanTerm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CreditAuthorizationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LenderCaseNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LockStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FixedRateTerm" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LockText" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="LoanNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ConciergeFullName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ConciergeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LockDays" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="eDocumentsAccepted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="eDocumentsAcceptanceDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PricingQueryXml" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" />
+      <Column Name="IncludeTaxesAndInsurances" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HaveRealEstateAgent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BarCode" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="RepricingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TotalPriceAdjustment" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RateAdjustmentSubsequentCapPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RateAdjustmentFirstChangeCapRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="RateAdjustmentLifetimeCapPercent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IndexType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Margin" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FloodFee" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="MIP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DownPaymentTypeCode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TitleInName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TitleInNameValue" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="MannerTitleHeld" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FullVesting" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="EstateHeldIn" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PaymentFrequency" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IndexValue" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AdjustmentPeriod" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FloorRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FirstPaymentAdjustmentMonths" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LockRequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ClosingDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FinalDisbursementDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SigningDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="RefinancePurpose" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnableDigitalDocsCall" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ConciergeCurrentActivityName" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="LosFolderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanApplicationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AgencyCaseNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsNoCost" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AdjustedPoints" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CashOutAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ConciergeCurrentActivityStatus" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="ReDisclosureNeeded" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DTI" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="HousingRatio" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="InvestorType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisclosuresModel" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OriginalPricingQuery" Type="System.Xml.Linq.XElement" DbType="Xml" CanBeNull="true" />
+      <Column Name="CreatedByImpersonatedConciergeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SmartCreditEnabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LoaFullName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LoaID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CostAmountIncludedInLoanAmount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="IncludeCostOption" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateFHACaseNoAssigned" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NeedToReprice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="REOAdded" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ManuallyEnteredCloseDate" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InitialApr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InitialPrice" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="InitialAdjustedPoints" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="IsCopied" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PriceChanged" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Variance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GFESettlementChargesDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsFromAllInvestorView" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="OBUserName" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ApplicationDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HarpLoanType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Aus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AppAndLock" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PricingDTI" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ImportToFNMInProgress" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="HomeBuying" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="eSigningVendorIntegrationEnabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ApplicationCompletedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PreApprovalStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CallCenterId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LoanOriginatorSource" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LeadSourceId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LeadCreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsHarp" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BranchId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="SmartGFEId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Conforming" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="InvestorName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="LoanWithoutPricing" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DivisionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChannelId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompanyId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="HearAboutUs" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SmartGFETempId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OriginationSystem" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsAppraisalLoan" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SmartGFEEnabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PartnerLeadSourceId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="LockExpireDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="OfferingIdentified" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PreApprovalRequestDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsBalloonPayment" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsGFEAlertSent" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ParentLoanId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="RUCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DisclosedAPR" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QualifyingRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QualifyingHousing" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="QualifyingDTI" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FICOScoreForPricing" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsLoanImported" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LiquidAssetReserves" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MortgageInsuranceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DecisionStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="VAInformationId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="NameOfPartner" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="InvestorMatrixId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SellSideInformationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="InvestorPrice" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="EnterprisePrice" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="LoanOfficerPrice" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="FinalLoanOfficerPrice" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="InvestorPurchasePrice" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="FinalPurchasePrice" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="AdjustedRate" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="CurrentMilestone" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DisclosureStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LeadStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DocDelivery" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EncompassBorrowerPairId" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SnoozeOrder" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsMilestoneStatusManual" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TotalAggregateAdjustment" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
+      <Column Name="NtbRequired" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="NegativeAmortization" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PrePaymentPenalty" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="PrePaymentAmount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="BonaFidePersonalReasonId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ComplianceCheckStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SalesManagerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TeamLeaderId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="GovermentEligibility" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreditAuthorizationAcceptedBy" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="USDAModerateIncomeLimit" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="IncomeVerificationType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CurrentWorkflowState" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NonTraditionalCreditType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PurposeOfRefinance" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsFirstTimeHomebuyer" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LockCode" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RateCard" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreditReportFee" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="PartnerFirstName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="PartnerLastName" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="NoFinancedProperties" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ServicingIndicator" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProductClassification" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LOSExportStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LOSExportStatusExpire" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FeeCalc" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsExportedToEncompass" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InterestOnly" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="InterestOnlyTermMonths" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsRemoved" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ExcludeMIforLTVUnder" Type="System.Decimal" DbType="Decimal(3,2)" CanBeNull="true" />
+      <Column Name="IsPricingFicoOverridden" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LoanChannelType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoanBalanceType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MustDiscloseInIMP" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="LenderLoanNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CommitmentNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AutoDiscloseTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="IsTitleChangedDueToRefi" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TitleRefiChanges" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="WorkflowId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssetVerification" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ProductIdentifier" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ProductCode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PurposeOfRefinanceLoan" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ExternalLOSUpdateStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="VAUpdatePriceFeesEnabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="MIRateQuoteId" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="InvestorRate" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="EnterpriseRate" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="LoanOfficerRate" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="FinalLoanOfficerRate" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="InvestorMargin" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="LoanOfficerMargin" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="FinalLoanOfficerMargin" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="EnterpriseMargin" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(18,3)" CanBeNull="true" />
+      <Column Name="AreAllBorrowersOnLoanBorrowerEligibility" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LatePyamentOnMortgageNonCreditQualPaymentEligibility" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LatePyamentOnSubjectPropertyNonCreditQualPaymentEligibility" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LatePyamentOnMortgageCreditQualPaymentEligibility" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="LatePyamentOnSubjectPropertyCreditQualPaymentEligibility" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WillNewLoanHaveSameBorrowers" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DefaultAUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StreamlinePaymentEligibility1" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StreamlinePaymentEligibility2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Has2ndMortgage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="IsLoanARM" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ARMLoanMonthsBeforeNextPaymentType" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Loan_AuditLog" Member="AuditLogs" ThisKey="LoanId" OtherKey="LoanId" Type="AuditLog" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AuditLog" Member="AuditLogs">
+    <Type Name="AuditLog">
+      <Column Name="AuditId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TimeStamp" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Title" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserAccountId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LoanId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="Category" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="[Level]" Member="Level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Loan_AuditLog" Member="Loan" ThisKey="LoanId" OtherKey="LoanId" Type="Loan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationStatus" Member="IntegrationStatus">
+    <Type Name="IntegrationStatus">
+      <Column Name="IntegrationStatusID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="LoanId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ProductID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="VendorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IntegrationStatusTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StatusChangedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="StatusMessage" Type="System.String" DbType="VarChar(4096)" CanBeNull="true" />
+      <Column Name="iMPTransactionID" Type="System.String" DbType="VarChar(1024)" CanBeNull="true" />
+      <Column Name="VendorTransactionID" Type="System.String" DbType="VarChar(1024)" CanBeNull="true" />
+      <Association Name="IntegrationStatus_IntegrationStatusDetail" Member="IntegrationStatusDetails" ThisKey="IntegrationStatusID" OtherKey="IntegrationStatusID" Type="IntegrationStatusDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntegrationStatusDetail" Member="IntegrationStatusDetails">
+    <Type Name="IntegrationStatusDetail">
+      <Column Name="IntegrationStatusDetailID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IntegrationStatusID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="IntegrationStatusDetailTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusDetailStateTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="MessageMediaTypeId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedAt" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="IntegrationStatus_IntegrationStatusDetail" Member="IntegrationStatus" ThisKey="IntegrationStatusID" OtherKey="IntegrationStatusID" Type="IntegrationStatus" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

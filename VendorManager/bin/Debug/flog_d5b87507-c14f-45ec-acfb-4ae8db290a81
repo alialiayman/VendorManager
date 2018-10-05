@@ -1,0 +1,119 @@
+CommonHelper.cs 74 ==>                 WebResponse res = req.GetResponse();
+Surronding Lines
+            {
+                requestStream.Write(send, 0, send.Length);
+                requestStream.Flush();
+                requestStream.Close();
+                WebResponse res = req.GetResponse();
+                using (StreamReader sr = new StreamReader(res.GetResponseStream()))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
+CreditService.cs 137 ==>                 string vendorResponse = context.ProviderHelper.PostToProvider(context.VendorRequest.ToString(), context.ProviderData.Provider_Url, context.ProviderData.Provider_UserName, context.ProviderData.Provider_Password, context.ProviderData.Settings);
+Surronding Lines
+        protected override void PostToVendor(IntegrationServiceContext<ServiceRequest<CreditRequest>, ServiceResponse<CreditResponse>> context)
+        {
+            try
+            {
+                string vendorResponse = context.ProviderHelper.PostToProvider(context.VendorRequest.ToString(), context.ProviderData.Provider_Url, context.ProviderData.Provider_UserName, context.ProviderData.Provider_Password, context.ProviderData.Settings);
+                context.VendorResponse = vendorResponse;
+                this.LogProvider.LogInfoFormatted("{0} - Post to vendor completed successfully.", this.ServiceName);
+            }
+            catch (Exception ex)
+            {,143 ==>                 throw new ServiceOperationException(string.Format("Error in {0}. Unable to Post to Vendor.", this.ServiceName), ex);
+Surronding Lines
+                this.LogProvider.LogInfoFormatted("{0} - Post to vendor completed successfully.", this.ServiceName);
+            }
+            catch (Exception ex)
+            {
+                throw new ServiceOperationException(string.Format("Error in {0}. Unable to Post to Vendor.", this.ServiceName), ex);
+            }
+        }
+
+        protected override IProviderHelper GetProviderHelper(CallerContext callerContext)
+        {
+IntegrationServiceBase.cs 38 ==>             PostToVendor(context);
+Surronding Lines
+        protected virtual void ProcessIntegration(IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context)
+        {
+            TransformIntegrationRequestToVendorRequest(context);
+            OnBeforePostToVendor(context);
+            PostToVendor(context);
+            OnAfterPostToVendor(context);
+            TransformVendorResponseToIntegrationResponse(context);
+            OnAfterTransformResponse(context);
+        }
+,29 ==>             ProcessIntegration(context as IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>>);
+Surronding Lines
+    public abstract class IntegrationServiceBase<requestType, responseType> : ServiceBase<requestType, responseType>
+    {
+        protected override responseType DoProcess(ServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context)
+        {
+            ProcessIntegration(context as IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>>);
+
+            return context.Response.ResponseData;
+        }
+
+        protected virtual void ProcessIntegration(IntegrationServiceContext<ServiceRequest<requestType>, ServiceResponse<responseType>> context)
+ServiceBase.cs 77 ==>                         response.ResponseData = DoProcess(context);
+Surronding Lines
+                            throw new RequestInvalidException("Service Validation failed.", messages);
+                        }
+
+                        OnStartProcessing(context);
+                        response.ResponseData = DoProcess(context);
+                    }
+                    catch (RequestInvalidException riex)
+                    {
+                        OnError(context, "Service validation failed", riex);
+                        response.Status = ServiceStatusEnum.Failure;
+MML.Common.ServiceOperationException: Error
+	in CreditService. Unable to Post to Vendor. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.
+  
+
+  
+		at MML.Services.Integrations.Credit.CommonHelper.PostToProvider(String xmlData, String url, String userid, String password, Object[] items)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\credit\MML.Services.Integrations.Credit\Helpers\CommonHelper.cs:line 74
+  
+		at MML.Services.Integrations.Credit.CreditService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\credit\MML.Services.Integrations.Credit\CreditService.cs:line 137
+   --- End of inner exception stack trace ---
+  
+		at MML.Services.Integrations.Credit.CreditService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\credit\MML.Services.Integrations.Credit\CreditService.cs:line 143
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.ProcessIntegration(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 38
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.DoProcess(ServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 29
+  
+		at MML.Services.Platform.Common.Services.ServiceBase`2.GetServiceResponse(ServiceRequest`1 request)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\Platform\MML.Services.Platform.Common.Services\ServiceBase.cs:line 77
+
+--------------------------------- Full Log File
+
+--------------------MML.Common.ServiceOperationException: Error
+	in CreditService. Unable to Post to Vendor. ---> System.Net.WebException: The remote server returned an error: (404) Not Found.
+  
+		at System.Net.HttpWebRequest.GetResponse()
+  
+		at MML.Services.Integrations.Credit.CommonHelper.PostToProvider(String xmlData, String url, String userid, String password, Object[] items)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\credit\MML.Services.Integrations.Credit\Helpers\CommonHelper.cs:line 74
+  
+		at MML.Services.Integrations.Credit.CreditService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\credit\MML.Services.Integrations.Credit\CreditService.cs:line 137
+   --- End of inner exception stack trace ---
+  
+		at MML.Services.Integrations.Credit.CreditService.PostToVendor(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\credit\MML.Services.Integrations.Credit\CreditService.cs:line 143
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.ProcessIntegration(IntegrationServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 38
+  
+		at MML.Services.Integrations.Common.Services.IntegrationServiceBase`2.DoProcess(ServiceContext`2 context)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\integrations\MML.Services.Integrations.Common.Services\IntegrationServiceBase.cs:line 29
+  
+		at MML.Services.Platform.Common.Services.ServiceBase`2.GetServiceResponse(ServiceRequest`1 request)
+	in C:\CODE\iMP\126\TRUNK.126\mml.services\Platform\MML.Services.Platform.Common.Services\ServiceBase.cs:line 77

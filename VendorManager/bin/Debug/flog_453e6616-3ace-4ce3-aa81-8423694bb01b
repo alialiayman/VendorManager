@@ -1,0 +1,181 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+Fam.cs 289,192,219,500,240
+URLADeliveryService.cs 2422,2534,322
+OperationHandler.cs 116
+Service.cs 63
+TxCanonicalToView.cs 1303,173
+MegaLoan.cs 406,307,281
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\71\s\br\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\71\s\br\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.LoanCenter.Los.Fam.Fam.GetLoanVM(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 289  
+		at MML.LoanCenter.Los.Fam.Fam.ExportLoan(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 192  
+		at MML.LoanCenter.Los.Fam.Fam.ExportLoan(Loan loan, Int32 userAccountId, String loanFolder, Byte[] importData)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 219  
+		at MML.LoanCenter.Los.Fam.Fam.ExportLoan(Loan loan, Int32 userAccountId, String loanFolder, Byte[] importData, Boolean requestDigitalPackages, String loanProductId, Boolean complianceCheck, Nullable`1 cocTrackingWorkflowTypeId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 500  
+		at MML.Services.URLADeliveryService.ImportLoanToLOS(Guid loanId, Byte[] importData, String loanFolder, Int32 userAccountId, Boolean requestDigitalPackages, String loanProductId, Boolean complianceCheck, Nullable`1 cocTrackingWorkflowTypeId)
+	in C:\TFS_agent\_work\71\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2422  
+		at MML.Services.URLADeliveryService.ProcessExportToEncompass(Guid loanId, Boolean isInitialExport, Int32 userAccountId, Boolean requestDigitalPackages, String loanProductId, Boolean complianceCheck, Boolean isDisclosureTriggered, Nullable`1 cocTrackingWorkflowTypeId)
+	in C:\TFS_agent\_work\71\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2534  
+		at MML.Services.URLADeliveryService.Handle(ProcessExportToEncompass message)
+	in C:\TFS_agent\_work\71\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 322  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\71\s\br\MML.ServiceModel\OperationHandler.cs:line 116  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\71\s\br\MML.ServiceModel\Service.cs:line 63  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )  
+
+
+Mapping types:
+PropertyProjectInfo -&gt; PropertyProjectInfoViewModel
+MML.Data.PropertyProjectInfo -&gt; MML.Web.LoanCenterModel.Loan.PropertyProjectInfoViewModel</Message><Source>Anonymously Hosted DynamicMethods Assembly</Source><TargetSite>lambda_method</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at lambda_method(Closure , Object , Object , ResolutionContext )
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.TxCanonicalToView.TxToPropertyViewModel(Nullable`1 loanId, Nullable`1 loanApplicationId, Property propertyCdm, ViewModelTxContext context)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\TxCanonicalToView.cs:line 1303
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.TxCanonicalToView.&lt;&gt;c__DisplayClass63_0.&lt;TxToLoanViewModel&gt;b__0(Property o)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\TxCanonicalToView.cs:line 173
+  
+
+  
+
+  
+
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.TxCanonicalToView.TxToLoanViewModel(Loan loanCdm, Int32 userAccountId, TxArgEnvelope txArgEnvelope)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\TxCanonicalToView.cs:line 173
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadInProc(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 406
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadGenuine(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 307
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoad(Guid loanId, Int32 userAccountId, String client_id, String redirect_uri, String scope, String response_type)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 281
+  
+		at MML.LoanCenter.Los.Fam.Fam.GetLoanVM(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 240</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\71\s\br\MML.TraceListeners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\71\s\br\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\71\s\br\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Los.Fam.Fam.GetLoanVM(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 289&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Los.Fam.Fam.ExportLoan(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 192&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Los.Fam.Fam.ExportLoan(Loan loan, Int32 userAccountId, String loanFolder, Byte[] importData)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 219&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Los.Fam.Fam.ExportLoan(Loan loan, Int32 userAccountId, String loanFolder, Byte[] importData, Boolean requestDigitalPackages, String loanProductId, Boolean complianceCheck, Nullable`1 cocTrackingWorkflowTypeId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 500&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.ImportLoanToLOS(Guid loanId, Byte[] importData, String loanFolder, Int32 userAccountId, Boolean requestDigitalPackages, String loanProductId, Boolean complianceCheck, Nullable`1 cocTrackingWorkflowTypeId)
+	in C:\TFS_agent\_work\71\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2422&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.ProcessExportToEncompass(Guid loanId, Boolean isInitialExport, Int32 userAccountId, Boolean requestDigitalPackages, String loanProductId, Boolean complianceCheck, Boolean isDisclosureTriggered, Nullable`1 cocTrackingWorkflowTypeId)
+	in C:\TFS_agent\_work\71\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 2534&amp;#xD;&amp;#xA;  
+		at MML.Services.URLADeliveryService.Handle(ProcessExportToEncompass message)
+	in C:\TFS_agent\_work\71\s\br\MML.Services.URLADelivery\URLADeliveryService.cs:line 322&amp;#xD;&amp;#xA;  
+		at System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)&amp;#xD;&amp;#xA;  
+		at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&amp;#xD;&amp;#xA;  
+		at System.Reflection.MethodBase.Invoke(Object obj, Object[] parameters)&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.OperationHandler.Handle(Object[] args)
+	in C:\TFS_agent\_work\71\s\br\MML.ServiceModel\OperationHandler.cs:line 116&amp;#xD;&amp;#xA;  
+		at MML.ServiceModel.Service.MML.ServiceModel.IService.Invoke(Message message)
+	in C:\TFS_agent\_work\71\s\br\MML.ServiceModel\Service.cs:line 63&amp;#xD;&amp;#xA;  
+		at SyncInvokeInvoke(Object , Object[] , Object[] )&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.SyncMethodInvoker.Invoke(Object instance, Object[] inputs, Object[]&amp;amp; outputs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.DispatchOperationRuntime.InvokeBegin(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage5(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage41(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage4(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage31(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage3(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage2(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage11(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ImmutableDispatchRuntime.ProcessMessage1(MessageRpc&amp;amp; rpc)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.MessageRpc.Process(Boolean isOperationContextSet)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.DispatchAndReleasePump(RequestContext request, Boolean cleanThread, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.HandleRequest(RequestContext request, OperationContext currentOperationContext)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.AsyncMessagePump(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Dispatcher.ChannelHandler.OnAsyncReceiveComplete(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.TransportDuplexSessionChannel.TryReceiveAsyncResult.OnReceive(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.Fx.AsyncThunk.UnhandledExceptionFrame(IAsyncResult result)&amp;#xD;&amp;#xA;  
+		at System.Runtime.AsyncResult.Complete(Boolean completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SynchronizedMessageSource.ReceiveAsyncResult.OnReceiveComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SessionConnectionReader.OnAsyncReadComplete(Object state)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.FinishRead()&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsync(Object sender, SocketAsyncEventArgs eventArgs)&amp;#xD;&amp;#xA;  
+		at System.ServiceModel.Channels.SocketConnection.OnReceiveAsyncCompleted(Object sender, SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.OnCompleted(SocketAsyncEventArgs e)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.FinishOperationSuccess(SocketError socketError, Int32 bytesTransferred, SocketFlags flags)&amp;#xD;&amp;#xA;  
+		at System.Net.Sockets.SocketAsyncEventArgs.CompletionPortCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* nativeOverlapped)&amp;#xD;&amp;#xA;  
+		at System.Threading._IOCompletionCallback.PerformIOCompletionCallback(UInt32 errorCode, UInt32 numBytes, NativeOverlapped* pOVERLAP)</Callstack><ExceptionInformation Type="AutoMapper.AutoMapperMappingException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Missing type map configuration or unsupported mapping.
+
+Mapping types:
+PropertyProjectInfo -&gt; PropertyProjectInfoViewModel
+MML.Data.PropertyProjectInfo -&gt; MML.Web.LoanCenterModel.Loan.PropertyProjectInfoViewModel</Message><Source>Anonymously Hosted DynamicMethods Assembly</Source><TargetSite>lambda_method</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at lambda_method(Closure , Object , Object , ResolutionContext )
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.TxCanonicalToView.TxToPropertyViewModel(Nullable`1 loanId, Nullable`1 loanApplicationId, Property propertyCdm, ViewModelTxContext context)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\TxCanonicalToView.cs:line 1303
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.TxCanonicalToView.&lt;&gt;c__DisplayClass63_0.&lt;TxToLoanViewModel&gt;b__0(Property o)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\TxCanonicalToView.cs:line 173
+  
+		at System.Linq.Enumerable.WhereSelectListIterator`2.MoveNext()
+  
+		at System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+  
+		at System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.TxCanonicalToView.TxToLoanViewModel(Loan loanCdm, Int32 userAccountId, TxArgEnvelope txArgEnvelope)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\TxCanonicalToView.cs:line 173
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadInProc(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 406
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadGenuine(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 307
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoad(Guid loanId, Int32 userAccountId, String client_id, String redirect_uri, String scope, String response_type)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 281
+  
+		at MML.LoanCenter.Los.Fam.Fam.GetLoanVM(Guid loanId, Int32 userAccountId)
+	in C:\TFS_agent\_work\71\s\br\MML.LoanCenter.Los.Fam\Fam.cs:line 240</StackTrace></ExceptionInformation>

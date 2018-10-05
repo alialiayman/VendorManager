@@ -1,0 +1,134 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+CanonicLOSIntegrationService.cs 204
+EncompassController.cs 153
+CrossSiteScriptingHandler.cs 28
+ApiLogHandler.cs 81
+URLADeliveryServiceFacade.cs 95,46
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.LoanCenter.Services.Canonic.CanonicLOSIntegrationService.SaveAppraisalDataToEncompass(AppraisalOrderShortViewModel inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.LoanCenter.Services\Canonic\CanonicLOSIntegrationService.cs:line 204  
+		at MML.Web.LoanCenter.Services.Controllers.Integrations.EncompassController.SaveAppraisalData(AppraisalOrderShortViewModel inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Web.LoanCenter.Services\Controllers\Integrations\EncompassController.cs:line 153  
+		at lambda_method(Closure , Object , Object[] )  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;SendAsync&amp;gt;d__3.MoveNext()
+	in C:\TFS_agent\_work\18\s\br\MML.Web.LoanCenter.Services\Handlers\CrossSiteScriptingHandler.cs:line 28  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()
+	in C:\TFS_agent\_work\18\s\br\MML.Web.LoanCenter.Services\Handlers\ApiLogHandler.cs:line 81  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.Facade.URLADeliveryServiceFacade.SaveAppraisalDataToEncompass(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.Facade\URLADeliveryServiceFacade.cs:line 95
+  
+		at MML.Web.Facade.Dynamic.URLADeliveryServiceFacade.SaveAppraisalDataToEncompass(WestVmAppraisalData inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.Facade\Implementation\URLADeliveryServiceFacade.cs:line 46
+  
+		at MML.LoanCenter.Services.Canonic.CanonicLOSIntegrationService.SaveAppraisalDataToEncompass(AppraisalOrderShortViewModel inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.LoanCenter.Services\Canonic\CanonicLOSIntegrationService.cs:line 204</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\6\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\22\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.LoanCenter.Services.Canonic.CanonicLOSIntegrationService.SaveAppraisalDataToEncompass(AppraisalOrderShortViewModel inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.LoanCenter.Services\Canonic\CanonicLOSIntegrationService.cs:line 204&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Controllers.Integrations.EncompassController.SaveAppraisalData(AppraisalOrderShortViewModel inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Web.LoanCenter.Services\Controllers\Integrations\EncompassController.cs:line 153&amp;#xD;&amp;#xA;  
+		at lambda_method(Closure , Object , Object[] )&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.&amp;lt;&amp;gt;c__DisplayClass10.&amp;lt;GetExecutor&amp;gt;b__9(Object instance, Object[] methodParameters)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.&amp;lt;InvokeActionAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.InvokeActionAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.InvokeActionAsync(HttpActionContext actionContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;ExecuteAsync&amp;gt;b__0(ActionInvoker innerInvoker)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;&amp;gt;c__DisplayClass10`1.&amp;lt;InvokeActionWithActionFilters&amp;gt;b__f()&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.&amp;lt;CallOnActionExecutedAsync&amp;gt;d__5.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.CallOnActionExecutedAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.&amp;lt;ExecuteActionFilterAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.ExecuteActionFilterAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.System.Web.Http.Filters.IActionFilter.ExecuteActionFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;ExecuteAsync&amp;gt;d__2.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.ExecuteAsync(CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.ApiController.ExecuteAsync(HttpControllerContext controllerContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpControllerDispatcher.&amp;lt;SendAsync&amp;gt;d__1.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpControllerDispatcher.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.HttpMessageInvoker.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpRoutingDispatcher.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;SendAsync&amp;gt;d__3.MoveNext()
+	in C:\TFS_agent\_work\18\s\br\MML.Web.LoanCenter.Services\Handlers\CrossSiteScriptingHandler.cs:line 28&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()
+	in C:\TFS_agent\_work\18\s\br\MML.Web.LoanCenter.Services\Handlers\ApiLogHandler.cs:line 81&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.HttpServer.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.HttpServer.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.HttpMessageInvoker.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.WebHost.HttpControllerHandler.&amp;lt;ProcessRequestAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.WebHost.HttpControllerHandler.ProcessRequestAsyncCore(HttpContextBase contextBase)&amp;#xD;&amp;#xA;  
+		at System.Web.TaskAsyncHelper.BeginTask(Func`1 taskFunc, AsyncCallback callback, Object state)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp;amp; completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.PipelineStepManager.ResumeSteps(Exception error)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.BeginProcessRequestNotification(HttpContext context, AsyncCallback cb)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)</Callstack><ExceptionInformation Type="System.InvalidOperationException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Failed to save appraisal data to Encompass Object is locked by user 'cloudvirgauser' </Message><Source>MML.Web.Facade</Source><TargetSite>SaveAppraisalDataToEncompass</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at MML.Web.Facade.URLADeliveryServiceFacade.SaveAppraisalDataToEncompass(WestVmAppraisalData appraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.Facade\URLADeliveryServiceFacade.cs:line 95
+  
+		at MML.Web.Facade.Dynamic.URLADeliveryServiceFacade.SaveAppraisalDataToEncompass(WestVmAppraisalData inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.Services.Facade\Implementation\URLADeliveryServiceFacade.cs:line 46
+  
+		at MML.LoanCenter.Services.Canonic.CanonicLOSIntegrationService.SaveAppraisalDataToEncompass(AppraisalOrderShortViewModel inputAppraisalData)
+	in C:\TFS_agent\_work\18\s\br\MML.LoanCenter.Services\Canonic\CanonicLOSIntegrationService.cs:line 204</StackTrace></ExceptionInformation>

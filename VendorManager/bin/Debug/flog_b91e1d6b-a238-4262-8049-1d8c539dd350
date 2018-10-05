@@ -1,0 +1,369 @@
+ServiceTraceListener.cs 298,180,84,52,38
+TraceHelper.cs 99,73
+MegaLoan.cs 348 ==>                 CDM.Loan loanCdm = DataContext.LoadLoanCdm(dbx => EfSurfaceInclude.LoanApplication(dbx, loanId), loanId, false, userAccountId);
+Surronding Lines
+        {
+            try
+            {
+                // Load Loan CDM
+                CDM.Loan loanCdm = DataContext.LoadLoanCdm(dbx => EfSurfaceInclude.LoanApplication(dbx, loanId), loanId, false, userAccountId);
+
+                // Validate
+                if (userAccountId < 0)
+                {
+                    throw new InvalidOperationException("userAccountId required to load Loan {0}".FormatWith(userAccountId));,308 ==>                     return EagerLoadInProc(loanId, userAccountId);
+Surronding Lines
+                //case DataServiceProcess.ExProcess:
+                //    return EagerLoadExProcVm(loanId, userAccountId);
+
+                default:
+                    return EagerLoadInProc(loanId, userAccountId);
+            }
+        }
+
+        public VM.LoanViewModel EagerLoadConsumerSite(Guid loanId, int userAccountId)
+        {,282 ==>                 return EagerLoadGenuine(loanId, userAccountId);
+Surronding Lines
+                return EagerLoadBootstrap(loanId, userAccountId);
+            }
+            else
+            {
+                return EagerLoadGenuine(loanId, userAccountId);
+            }
+        }
+
+        private VM.LoanViewModel EagerLoadBootstrap(Guid loanId, int userAccountId)
+        {
+LoanViewModelBuilder.cs 57 ==>             LoanViewModel loanVm = megaLoan.EagerLoad(loanId, userAccountId);
+Surronding Lines
+
+            Guid loanId = param.LoanId.Value;
+            int userAccountId = param.UserAccountId;
+            MegaLoan megaLoan = new MegaLoan();
+            LoanViewModel loanVm = megaLoan.EagerLoad(loanId, userAccountId);
+
+            loanVm.Is4506TFeatureEnabled = Feature4506TConfiguration.Is4506TFeatureEnabled();
+            // to make sure name on tile are the same across all 1030s applications
+            // as the tile is at the loan level
+            foreach (var loanApp in loanVm.TransactionInfo.LoanApplications)
+LoanController.cs 89 ==>             LoanViewModel loan = _loanViewModelBuilder.Build(param);
+Surronding Lines
+        }
+
+        private LoanViewModel Build(ViewModelBuilderParametersBase param)
+        {
+            LoanViewModel loan = _loanViewModelBuilder.Build(param);
+            return loan;
+        }
+
+        private LoanViewModel Build(Guid loanId, int userAccountId)
+        {,239 ==>             var resp = _responseHelper.BuildResponse<LoanViewModel>(Build, param);
+Surronding Lines
+            // Map the viewmodel builder parameters.
+            ViewModelBuilderParametersBase param = new LoanViewModelBuilderParameters(loanId, userAccountId);
+
+            // Build the viewmodel and the response.
+            var resp = _responseHelper.BuildResponse<LoanViewModel>(Build, param);
+
+            // confirm route
+            resp.Headers.Add("X-LCC-LoanController", "Get [{0}] on [{1}]".FormatWith(loanId, DateTime.Now));
+
+            return resp;
+HttpResponseHelper.cs 106 ==>                 T result = build(param);
+Surronding Lines
+        {
+            try
+            {
+                // Build the viewmodel.
+                T result = build(param);
+
+                //
+                //  This check can be a problem if T is a value type such as bool or double or int or something else
+                //  where default(T) returns 0 (such as false). If that occurs, the test will throw a erroneous
+                //  exception. There is one case where T is a struct that may be an issue; however, the problem with the original test
+CrossSiteScriptingHandler.cs 28 ==>             return await base.SendAsync(request, cancellationToken);
+Surronding Lines
+               
+                if (xssRegex.Match(content).Success)
+                    return request.CreateResponse(HttpStatusCode.NotAcceptable);
+            }
+            return await base.SendAsync(request, cancellationToken);
+        }
+
+        private bool checkRequest(HttpRequestMessage request)
+        {
+            // check posts and puts and json and text content types and if content type is not sent
+ApiLogHandler.cs 81 ==>                 return await base.SendAsync(request, cancellationToken);
+Surronding Lines
+            }
+            else
+            {
+                // Process request without any logging
+                return await base.SendAsync(request, cancellationToken);
+            }
+        }
+
+        private decimal StopStopwatchAndReturnElapsedTime(Stopwatch sw)
+        {
+EfSurfaceInclude.cs 543 ==>             return loans
+Surronding Lines
+                .IncludeMega("LoanEntityAttributes");
+
+            loans = GetForm4506TMegaTree(loans);
+
+            return loans
+                .Where(loanId)
+                .Fetch().ToList();
+        }
+
+        public static List<EF.Loan> LoanApplication(EF.MainDbContext iMP, Expression<Func<EF.Loan, bool>> predicate),68 ==>                 return LoanApplicationMega(iMP, loanId);
+Surronding Lines
+            {
+                //
+                TraceHelper.Information(TraceCategory.LoanCenter, "EfSurfaceInclude LoanApplication ConfigEfMega TRUE", loanId, 1/*userid*/);
+
+                return LoanApplicationMega(iMP, loanId);
+            }
+            else
+            {
+                //
+                TraceHelper.Information(TraceCategory.LoanCenter, "EfSurfaceInclude LoanApplication ConfigEfMega FALSE", loanId, 1/*userid*/);
+DataContext.cs 322 ==>                         throw;
+Surronding Lines
+                    }
+                    catch
+                    {
+                        //efctx.ShowLog();
+                        throw;
+                    }
+
+                    if ((userAccountId.HasValue) && (userAccountId != 0) && loanEf != null && loanEf.Any())
+                    {
+                        Guid parentLoanId = loanEf.FirstOrDefault(p => p.ParentLoanId == null).LoanID;
+</LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadInProc(Guid loanId, Int32 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 348  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadGenuine(Guid loanId, Int32 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 308  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoad(Guid loanId, Int32 userAccountId, String client_id, String redirect_uri, String scope, String response_type)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 282  
+		at MML.Web.LoanCenter.Services.ViewModelBuilders.Implementations.LoanViewModelBuilder.Build(ViewModelBuilderParametersBase param)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\ViewModelBuilders\Implementations\Loan\LoanViewModelBuilder.cs:line 57  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanController.Build(ViewModelBuilderParametersBase param)
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Controllers\Loan\LoanController.cs:line 89  
+		at MML.Web.LoanCenter.Services.Helpers.HttpResponseHelper.BuildResponse[T](Func`2 build, ViewModelBuilderParametersBase param)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Helpers\HttpResponseHelper.cs:line 106  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanController.Get(Guid loanId, Int32 userAccountId, String client_id, String redirect_uri, String scope, String response_type)
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Controllers\Loan\LoanController.cs:line 239  
+		at lambda_method(Closure , Object , Object[] )  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;SendAsync&amp;gt;d__3.MoveNext()
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Handlers\CrossSiteScriptingHandler.cs:line 28  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Handlers\ApiLogHandler.cs:line 81  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)  
+
+Invalid column name 'SpouseOfApplicant'.
+Invalid column name 'MonthsToBePaidLocked'.
+Invalid column name 'DateOfBirth'.
+Invalid column name 'SpouseOfApplicant'.
+Invalid column name 'OriginalPricingType'.</Message><Source>.Net SqlClient Data Provider</Source><TargetSite>OnError</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+		at MML.Data.EF.FetchMega.MegaPredicate`1.ExecuteReaderInternal(String sql)
+  
+		at MML.Data.EF.FetchMega.MegaPredicate`1.Fetch()
+  
+		at MML.Web.LoanCenter.Services.DataAccess.EfSurfaceInclude.LoanApplicationMega(MainDbContext iMP, Guid loanId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.DataAccess\EfSurfaceInclude.cs:line 543
+  
+		at MML.Web.LoanCenter.Services.DataAccess.EfSurfaceInclude.LoanApplication(MainDbContext iMP, Guid loanId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.DataAccess\EfSurfaceInclude.cs:line 68
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.&lt;&gt;c__DisplayClass57_0.&lt;EagerLoadInProc&gt;b__0(MainDbContext dbx)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 348
+  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.LoadLoanCdm(Func`2 surface, Guid loanId, Boolean logSQL, Nullable`1 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.DataAccess\DataContext.cs:line 322
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadInProc(Guid loanId, Int32 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 348</StackTrace></ExceptionInformation>
+
+--------------------------------- Full Log File
+
+--------------------<LogicalOperationStack xmlns="http://www.meandmyloan.com/2009/01/Serialization"></LogicalOperationStack><Callstack xmlns="http://www.meandmyloan.com/2009/01/Serialization">  
+		at System.Environment.GetStackTrace(Exception e, Boolean needFileInfo)&amp;#xD;&amp;#xA;  
+		at System.Environment.get_StackTrace()&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceEventCache.get_Callstack()&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.WriteEventCache(TraceEventCache eventCache, TextWriter textWriter)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 298&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.GetAdditionalInfo(TraceEventCache eventCache, Object[] objects)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 180&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, String message, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 84&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object[] data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 52&amp;#xD;&amp;#xA;  
+		at MML.TraceListeners.ServiceTraceListener.TraceData(TraceEventCache eventCache, String source, TraceEventType eventType, Int32 id, Object data)
+	in C:\TFS_agent\_work\7\s\Trunk.126\MML.Tracelisteners\ServiceTraceListener.cs:line 38&amp;#xD;&amp;#xA;  
+		at System.Diagnostics.TraceSource.TraceData(TraceEventType eventType, Int32 id, Object data)&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Object[] data, Guid loanId, Int32 userId, Exception ex)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 99&amp;#xD;&amp;#xA;  
+		at MML.Common.TraceHelper.Error(Int32 id, String message, Exception ex, Guid loanId, Int32 userId)
+	in C:\TFS_agent\_work\26\s\Trunk.126\MML.Common\Helpers\TraceHelper.cs:line 73&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadInProc(Guid loanId, Int32 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 348&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadGenuine(Guid loanId, Int32 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 308&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoad(Guid loanId, Int32 userAccountId, String client_id, String redirect_uri, String scope, String response_type)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 282&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.ViewModelBuilders.Implementations.LoanViewModelBuilder.Build(ViewModelBuilderParametersBase param)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\ViewModelBuilders\Implementations\Loan\LoanViewModelBuilder.cs:line 57&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanController.Build(ViewModelBuilderParametersBase param)
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Controllers\Loan\LoanController.cs:line 89&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Helpers.HttpResponseHelper.BuildResponse[T](Func`2 build, ViewModelBuilderParametersBase param)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Helpers\HttpResponseHelper.cs:line 106&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Controllers.Loan.LoanController.Get(Guid loanId, Int32 userAccountId, String client_id, String redirect_uri, String scope, String response_type)
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Controllers\Loan\LoanController.cs:line 239&amp;#xD;&amp;#xA;  
+		at lambda_method(Closure , Object , Object[] )&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.&amp;lt;&amp;gt;c__DisplayClass10.&amp;lt;GetExecutor&amp;gt;b__9(Object instance, Object[] methodParameters)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ExecuteAsync(HttpControllerContext controllerContext, IDictionary`2 arguments, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.&amp;lt;InvokeActionAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.InvokeActionAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ApiControllerActionInvoker.InvokeActionAsync(HttpActionContext actionContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;ExecuteAsync&amp;gt;b__0(ActionInvoker innerInvoker)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;&amp;gt;c__DisplayClass10`1.&amp;lt;InvokeActionWithActionFilters&amp;gt;b__f()&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.&amp;lt;CallOnActionExecutedAsync&amp;gt;d__5.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.CallOnActionExecutedAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.&amp;lt;ExecuteActionFilterAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.ExecuteActionFilterAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.ActionFilterAttribute.System.Web.Http.Filters.IActionFilter.ExecuteActionFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.&amp;lt;ExecuteAsync&amp;gt;d__2.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.ActionFilterResult.ExecuteAsync(CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.AuthorizationFilterAttribute.&amp;lt;ExecuteAuthorizationFilterAsyncCore&amp;gt;d__2.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.AuthorizationFilterAttribute.ExecuteAuthorizationFilterAsyncCore(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Filters.AuthorizationFilterAttribute.System.Web.Http.Filters.IAuthorizationFilter.ExecuteAuthorizationFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func`1 continuation)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Controllers.AuthorizationFilterResult.ExecuteAsync(CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.ApiController.ExecuteAsync(HttpControllerContext controllerContext, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpControllerDispatcher.&amp;lt;SendAsync&amp;gt;d__1.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpControllerDispatcher.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.HttpMessageInvoker.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Dispatcher.HttpRoutingDispatcher.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.&amp;lt;SendAsync&amp;gt;d__3.MoveNext()
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Handlers\CrossSiteScriptingHandler.cs:line 28&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.CrossSiteScriptingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;&amp;gt;n__0(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()
+	in C:\CODE\iMP\126\Trunk.126\MML.Web.LoanCenter.Services\Handlers\ApiLogHandler.cs:line 81&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at MML.Web.LoanCenter.Services.Handlers.ApiLogHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.Cors.CorsMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.DelegatingHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.HttpServer.&amp;lt;SendAsync&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.HttpServer.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Net.Http.HttpMessageInvoker.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.WebHost.HttpControllerHandler.&amp;lt;ProcessRequestAsyncCore&amp;gt;d__0.MoveNext()&amp;#xD;&amp;#xA;  
+		at System.Runtime.CompilerServices.AsyncTaskMethodBuilder.Start[TStateMachine](TStateMachine&amp;amp; stateMachine)&amp;#xD;&amp;#xA;  
+		at System.Web.Http.WebHost.HttpControllerHandler.ProcessRequestAsyncCore(HttpContextBase contextBase)&amp;#xD;&amp;#xA;  
+		at System.Web.TaskAsyncHelper.BeginTask(Func`1 taskFunc, AsyncCallback callback, Object state)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp;amp; completedSynchronously)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.PipelineStepManager.ResumeSteps(Exception error)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpApplication.BeginProcessRequestNotification(HttpContext context, AsyncCallback cb)&amp;#xD;&amp;#xA;  
+		at System.Web.HttpRuntime.ProcessRequestNotificationPrivate(IIS7WorkerRequest wr, HttpContext context)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.UnsafeIISMethods.MgdIndicateCompletion(IntPtr pHandler, RequestNotificationStatus&amp;amp; notificationStatus)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.UnsafeIISMethods.MgdIndicateCompletion(IntPtr pHandler, RequestNotificationStatus&amp;amp; notificationStatus)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotificationHelper(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)&amp;#xD;&amp;#xA;  
+		at System.Web.Hosting.PipelineRuntime.ProcessRequestNotification(IntPtr rootedObjectsPointer, IntPtr nativeRequestContext, IntPtr moduleData, Int32 flags)</Callstack><ExceptionInformation Type="System.Data.SqlClient.SqlException" xmlns="http://www.meandmyloan.com/2009/01/Serialization"><Message>Invalid column name 'DateOfBirth'.
+Invalid column name 'SpouseOfApplicant'.
+Invalid column name 'MonthsToBePaidLocked'.
+Invalid column name 'DateOfBirth'.
+Invalid column name 'SpouseOfApplicant'.
+Invalid column name 'OriginalPricingType'.</Message><Source>.Net SqlClient Data Provider</Source><TargetSite>OnError</TargetSite><InnerExceptions></InnerExceptions><StackTrace>  
+		at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+  
+		at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+  
+		at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean&amp; dataReady)
+  
+		at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+  
+		at System.Data.SqlClient.SqlDataReader.get_MetaData()
+  
+		at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+  
+		at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task&amp; task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+  
+		at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task&amp; task, Boolean asyncWrite)
+  
+		at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+  
+		at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+  
+		at MML.Data.EF.FetchMega.MegaPredicate`1.ExecuteReaderInternal(String sql)
+  
+		at MML.Data.EF.FetchMega.MegaPredicate`1.Fetch()
+  
+		at MML.Web.LoanCenter.Services.DataAccess.EfSurfaceInclude.LoanApplicationMega(MainDbContext iMP, Guid loanId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.DataAccess\EfSurfaceInclude.cs:line 543
+  
+		at MML.Web.LoanCenter.Services.DataAccess.EfSurfaceInclude.LoanApplication(MainDbContext iMP, Guid loanId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.DataAccess\EfSurfaceInclude.cs:line 68
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.&lt;&gt;c__DisplayClass57_0.&lt;EagerLoadInProc&gt;b__0(MainDbContext dbx)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 348
+  
+		at MML.Web.LoanCenter.Services.DataAccess.DataContext.LoadLoanCdm(Func`2 surface, Guid loanId, Boolean logSQL, Nullable`1 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.DataAccess\DataContext.cs:line 322
+  
+		at MML.Web.LoanCenter.Services.Services.Loan.MegaLoan.EagerLoadInProc(Guid loanId, Int32 userAccountId)
+	in C:\CODE\iMP\126\Trunk.126\MML.LoanCenter.Services\Loan\MegaLoan.cs:line 348</StackTrace></ExceptionInformation>
